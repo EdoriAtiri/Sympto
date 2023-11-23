@@ -186,7 +186,7 @@ const Home = () => {
       {/* <!-- Get started button --> */}
       <section className="w-full bg-sky-900 py-16">
         <hr className="mx-auto max-w-5xl border-gray-600 pb-12" />
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-center px-4 text-center sm:flex-row sm:justify-between sm:px-6 sm:text-left lg:px-8">
+        <div className="mx-auto flex max-w-5xl flex-col items-center justify-center gap-4 px-4 text-center sm:flex-row sm:justify-between sm:gap-0 sm:px-6 sm:text-left lg:px-8">
           <div>
             <h2 className="text-xl text-gray-200">
               Register today. Get started tomorrow.
