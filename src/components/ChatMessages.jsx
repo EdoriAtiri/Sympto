@@ -6,7 +6,7 @@ const ChatMessages = ({ message, role }) => {
       <div
         className={`w-1 ${role === "user" ? "bg-sky-500" : "bg-green-500"}`}
       ></div>
-      <div className="w-full p-3">{message}</div>
+      <div className="w-full p-6">{message}</div>
     </div>
   );
 };

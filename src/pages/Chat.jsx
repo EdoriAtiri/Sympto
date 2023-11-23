@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ChatMessages from "../components/ChatMessages";
 import { FaArrowRight } from "react-icons/fa";
 
 const Chat = () => {
   const [input, setInput] = useState("");
+  const chatBoxRef = useRef(null);
+
   const [chatLog, setChatLog] = useState([
     {
       role: "gpt",
@@ -11,7 +13,17 @@ const Chat = () => {
     },
     {
       role: "user",
-      message: "i want to use chatgpt today",
+      message: "i want to use sympto sage today",
+    },
+    {
+      role: "gpt",
+      message:
+        "lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita ratione iure delectus tempora porro officiis culpa quo dolorum ducimus, mollitia magnam in eligendi quasi accusantium vero molestias veritatis et nobis ullam omnis eveniet aliquam, cumque deserunt? Dolores dolorum consequuntur dolorem optio, vitae sunt?",
+    },
+    {
+      role: "user",
+      message:
+        "lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita ratione iure delectus tempora porro officiis culpa quo dolorum ducimu dolorum consequuntur dolorem optio, vitae sunt?",
     },
     {
       role: "gpt",
@@ -25,6 +37,12 @@ const Chat = () => {
     },
   ]);
 
+  const scrollToBottom = () => {
+    if (chatBoxRef.current) {
+      chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let newChatLog = [...chatLog, { role: "user", message: `${input}` }];
@@ -36,13 +54,19 @@ const Chat = () => {
 
   useEffect(() => {
     console.log(chatLog);
+    setTimeout(() => {
+      scrollToBottom();
+    }, 0);
   }, [chatLog]);
 
   return (
     <div className="relative min-h-screen w-full bg-sky-200">
-      <div className="tranform absolute left-1/2 top-1/2 w-3/4 -translate-x-1/2 -translate-y-1/2 ">
+      <div className="tranform absolute left-1/2 top-1/2 w-3/4 -translate-x-1/2 -translate-y-1/2 [&>*]:border-b [&>*]:border-sky-500">
         {/* Chat box */}
-        <div className="h-[500px] overflow-auto rounded-t-lg bg-sky-100">
+        <div
+          ref={chatBoxRef}
+          className="h-[500px] overflow-auto rounded-t-lg bg-sky-100"
+        >
           {chatLog.map((chat, index) => (
             <ChatMessages key={index} message={chat.message} role={chat.role} />
           ))}
