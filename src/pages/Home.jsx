@@ -17,11 +17,10 @@ const Home = () => {
       <nav className="bg-white text-sm text-gray-500">
         <div className="relative mx-auto max-w-6xl">
           <div className="flex items-center justify-between p-4">
-            <Link
-              href="index.html"
-              className="rounded-full p-1 focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2"
-            >
-              <span>SymptoSage</span>
+            <Link className="rounded-full p-1 focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2">
+              <span className="font-cursive text-4xl text-sky-900">
+                SymptoSage
+              </span>
             </Link>
             <div className="hidden lg:block">
               <ul className="flex cursor-pointer items-center space-x-12 text-lg">
@@ -46,13 +45,13 @@ const Home = () => {
             <div className="flex gap-3">
               <Link
                 to="#"
-                className="hidden items-center justify-center rounded-md bg-white px-4 py-2 text-lg font-medium text-sky-600 hover:bg-sky-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2 lg:flex"
+                className="hidden items-center justify-center rounded-md bg-white px-4 py-2 text-lg font-medium text-sky-500 hover:bg-sky-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 lg:flex"
               >
                 Login
               </Link>
               <Link
                 to="#"
-                className="hidden items-center justify-center rounded-md bg-sky-600 px-4 py-2 text-lg font-medium text-white hover:bg-sky-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2 lg:flex"
+                className="hidden items-center justify-center rounded-md bg-sky-500 px-4 py-2 text-lg font-medium text-white hover:bg-sky-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 lg:flex"
               >
                 Register
               </Link>
@@ -172,14 +171,14 @@ const Home = () => {
                   <img
                     src={metrics1}
                     alt=""
-                    className="absolute left-0 top-0 z-20 h-auto w-2/3 rounded-xl border shadow-2xl"
+                    className="absolute left-0 top-0 z-20 hidden h-auto w-2/3 rounded-xl border shadow-2xl md:block"
                   />
                 </div>
               </div>
             </div>
           </div>
           <div className="mt-10 md:w-1/2">
-            <div className="relative z-20 flex h-full flex-col justify-center md:pr-8">
+            <div className="relative z-20 flex h-full flex-col justify-center pt-4 md:pr-8 md:pt-0">
               <h2 className="text-3xl text-gray-800">
                 Lorem ipsum dolor, sit amet consectetur adipisicing.{" "}
               </h2>
@@ -274,7 +273,7 @@ const Home = () => {
               Register today. Get started tomorrow.
             </h2>
             <p className="mt-1 text-lg text-gray-400">
-              No more headaches. We simplify HR for startups.
+              No more headaches. We simplify symptom identification
             </p>
           </div>
           <Link

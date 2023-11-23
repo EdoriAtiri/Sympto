@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <Router>
-        <div className="min-h-screen w-full">
+        <div className="font-montserrat min-h-screen w-full">
           <Routes>
             <Route path="/" element={<Home />} />
             {/* <Route path="/signup" element={<Signup />} />
