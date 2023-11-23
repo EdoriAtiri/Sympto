@@ -1,11 +1,29 @@
-import React from "react";
+import { useState } from "react";
 
 const Chat = () => {
+  const [chatLog, setChatLog] = useState([
+    {
+      role: "gpt",
+      message: "how can i help you",
+    },
+    {
+      role: "user",
+      message: "i want to use chatgpt today",
+    },
+  ]);
+
   return (
     <div className="relative min-h-screen w-full bg-sky-200">
       <div className="tranform absolute left-1/2 top-1/2 w-3/4 -translate-x-1/2 -translate-y-1/2 ">
         {/* Chat box */}
-        <div className="h-[500px] overflow-auto rounded-t-lg bg-sky-100"></div>
+        <div className="h-[500px] overflow-auto rounded-t-lg bg-sky-100">
+          {chatLog.map((chat, index) => (
+            <div key={index} className="flex h-fit w-full bg-sky-50">
+              <div className="w-1 bg-green-500"></div>
+              <div className="w-full p-3">{chat.message}</div>
+            </div>
+          ))}
+        </div>
 
         {/* input */}
 
