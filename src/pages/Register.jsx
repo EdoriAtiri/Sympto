@@ -1,31 +1,56 @@
+import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import Header from "../components/Header";
+import Logo from "../components/Logo";
+import { Link } from "react-router-dom";
+
 const Register = () => {
+  const [formInput, setFormInput] = useState({
+    email: "",
+    password: "",
+    password2: "",
+  });
+
+  const { email, password, password2 } = formInput;
+
+  const onChange = (e) => {
+    setFormInput((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    if (password !== password2) {
+      console.log("passwords do not match");
+    }
+
+    console.log(formInput);
+  };
+
   return (
     <div>
-      <div>
-        <Header />
-      </div>
-
       <main className="flex h-screen w-full flex-col items-center justify-center px-4">
         <div className="w-full max-w-sm space-y-5 text-gray-600">
           <div className="pb-8 text-center">
-            <img
-              src="https://floatui.com/logo.svg"
-              width={150}
-              className="mx-auto"
-            />
+            <Logo />
             <div className="mt-5">
               <h3 className="text-2xl font-bold text-gray-800 sm:text-3xl">
-                Log in to your account
+                Register a New Account
               </h3>
             </div>
           </div>
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
+
+          <form onSubmit={onSubmit} className="space-y-5">
             <div>
               <label className="font-medium">Email</label>
               <input
+                onChange={onChange}
                 type="email"
+                id="email"
+                name="email"
+                value={email}
                 required
                 className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
               />
@@ -33,24 +58,28 @@ const Register = () => {
             <div>
               <label className="font-medium">Password</label>
               <input
+                onChange={onChange}
                 type="password"
+                id="password"
+                name="password"
+                value={password}
+                required
+                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+              />
+            </div>
+            <div>
+              <label className="font-medium">Confirm Password</label>
+              <input
+                onChange={onChange}
+                type="password"
+                id="password2"
+                name="password2"
+                value={password2}
                 required
                 className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
               />
             </div>
             <div className="flex items-center justify-between text-sm">
-              <div className="flex items-center gap-x-3">
-                <input
-                  type="checkbox"
-                  id="remember-me-checkbox"
-                  className="checkbox-item peer hidden"
-                />
-                <label
-                  htmlFor="remember-me-checkbox"
-                  className="relative flex h-5 w-5 cursor-pointer rounded-md border bg-white ring-indigo-600 ring-offset-2 duration-150 after:absolute after:inset-x-0 after:top-[3px] after:m-auto after:h-2.5 after:w-1.5 after:rotate-45 after:border-b-2 after:border-r-2 after:border-white peer-checked:bg-indigo-600 peer-active:ring"
-                ></label>
-                <span>Remember me</span>
-              </div>
               <a
                 href="javascript:void(0)"
                 className="text-center text-indigo-600 hover:text-indigo-500"
@@ -67,13 +96,13 @@ const Register = () => {
             Continue with Google
           </button>
           <p className="text-center">
-            Don't have an account?{" "}
-            <a
-              href="javascript:void(0)"
+            Already have an account?{" "}
+            <Link
+              to="/login"
               className="font-medium text-indigo-600 hover:text-indigo-500"
             >
-              Sign up
-            </a>
+              login{" "}
+            </Link>
           </p>
         </div>
       </main>

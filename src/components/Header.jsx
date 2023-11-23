@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 const Header = () => {
   return (
@@ -6,9 +7,7 @@ const Header = () => {
       <div className="relative mx-auto max-w-6xl">
         <div className="flex items-center justify-between p-4">
           <Link className="rounded-full p-1 focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2">
-            <span className="font-cursive text-4xl text-sky-900">
-              SymptoSage
-            </span>
+            <Logo />
           </Link>
           <div className="hidden lg:block">
             <ul className="flex cursor-pointer items-center space-x-12 text-lg">
