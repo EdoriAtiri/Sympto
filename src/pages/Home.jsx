@@ -1,7 +1,15 @@
-import { FaArrowRight } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaAt,
+  FaFacebook,
+  FaInstagram,
+  FaTwitter,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import onlineTest from "../assets/online_test.svg";
 import person from "../assets/person-using-pc-.jpg";
+import metrics1 from "../assets/metrics-img-1.png";
+import metrics2 from "../assets/metrics-img-2.png";
 
 const Home = () => {
   return (
@@ -105,6 +113,160 @@ const Home = () => {
           <div className="absolute bottom-0 z-10 h-[6vw] w-full translate-y-1/2 skew-y-3 transform bg-white"></div>
         </div>
       </section>
+
+      {/* <!-- Metrics section --> */}
+      <section className="relatvie z-20 w-full">
+        <div className="relative -top-24 mx-auto flex max-w-5xl flex-col px-4 pt-8 md:flex-row md:px-8">
+          <div className="relative md:order-2 md:w-1/2">
+            <div className="mx-auto w-full max-w-md">
+              <div className="aspect-w-7 aspect-h-8 relative w-full">
+                <div className="absolute h-auto w-full">
+                  <img
+                    src={metrics1}
+                    alt=""
+                    className="absolute left-0 top-0 z-20 h-auto w-2/3 rounded-xl border shadow-2xl"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mt-10 md:w-1/2">
+            <div className="relative z-20 flex h-full flex-col justify-center md:pr-8">
+              <h2 className="text-3xl text-gray-800">
+                Lorem ipsum dolor, sit amet consectetur adipisicing.{" "}
+              </h2>
+              <p className="mt-6 text-lg text-gray-600">
+                Gathering and analyzing your symptoms is a key part of personal
+                health, but the amount of time and effort it takes to collect,
+                study and research symptoms can be a challenge. We store all of
+                your health information in a secure database with powerful
+                reporting tools tools to make it easy to manage.
+              </p>
+              <ul className="grid grid-cols-1 gap-4 py-8 text-green-800 md:grid-cols-2">
+                <li className="flex">
+                  <div className="mr-2 h-6 w-6 rounded-full bg-green-50 p-1">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  Report Summaries
+                </li>
+                <li className="flex">
+                  <div className="mr-2 h-6 w-6 rounded-full bg-green-50 p-1">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  Symptom tracking
+                </li>
+                <li className="flex">
+                  <div className="mr-2 h-6 w-6 rounded-full bg-green-50 p-1">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  Hospital Liason
+                </li>
+                <li className="flex">
+                  <div className="mr-2 h-6 w-6 rounded-full bg-green-50 p-1">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  On/offboarding
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* <!-- Get started button --> */}
+      <section className="w-full bg-sky-900 py-16">
+        <hr className="mx-auto max-w-5xl border-gray-600 pb-12" />
+        <div className="mx-auto flex max-w-5xl flex-col items-center justify-center px-4 text-center sm:flex-row sm:justify-between sm:px-6 sm:text-left lg:px-8">
+          <div>
+            <h2 className="text-xl text-gray-200">
+              Register today. Get started tomorrow.
+            </h2>
+            <p className="mt-1 text-lg text-gray-400">
+              No more headaches. We simplify HR for startups.
+            </p>
+          </div>
+          <Link
+            to=""
+            className="flex items-center justify-center rounded-md bg-sky-600 px-6 py-3 text-lg font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2 focus:ring-offset-sky-900"
+          >
+            Get Started
+          </Link>
+        </div>
+        <hr className="mx-auto mt-12 max-w-5xl border-gray-600" />
+      </section>
+
+      <footer className="bg-sky-900">
+        <div className="mx-auto max-w-7xl overflow-hidden px-4 py-12 sm:px-6 lg:px-8">
+          <div className="mt-8 flex justify-center space-x-6">
+            <a href="#" className="text-gray-200 hover:text-gray-400">
+              <span className="sr-only">Facebook</span>
+              <FaFacebook size="1.5em" />
+            </a>
+
+            <a href="#" className="text-gray-200 hover:text-gray-400">
+              <span className="sr-only">Instagram</span>
+              <FaInstagram size="1.5em" />
+            </a>
+
+            <a href="#" className="text-gray-200 hover:text-gray-400">
+              <span className="sr-only">Twitter</span>
+              <FaTwitter size="1.5em" />
+            </a>
+
+            <a href="#" className="text-gray-200 hover:text-gray-400">
+              <span className="sr-only">Mail</span>
+              <FaAt size="1.5em" />
+            </a>
+          </div>
+          <p className="mt-8 text-center text-base text-gray-200">
+            &copy; 2023<a href="#"> SymptoSage</a>, Inc. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
