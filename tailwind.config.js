@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        cursive: ["Courgette", "cursive"],
+        lobster: ["Lobster Two", "sans-serif"],
         montserrat: ["Montserrat", " sans-serif"],
       },
     },
