@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ChatMessages from "../components/ChatMessages";
+import { FaArrowRight } from "react-icons/fa";
 
 const Chat = () => {
   const [input, setInput] = useState("");
@@ -41,15 +42,16 @@ const Chat = () => {
         <form onSubmit={handleSubmit} className="">
           <div className="flex h-20 w-full rounded-b-lg bg-white px-4 py-4 text-lg font-bold shadow-xl shadow-sky-400">
             <input
-              className="h-full w-5/6 rounded-lg outline-none"
+              className="h-full w-11/12 rounded-lg outline-none sm:w-5/6"
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="message"
             />
-            <div className="grid h-full w-1/6 place-items-center">
-              <button className="h-full w-24 rounded-lg bg-sky-500 text-white shadow-inner shadow-sky-200 drop-shadow-2xl transition-shadow active:shadow-none">
-                Send
+            <div className="grid h-full w-1/12 place-items-end sm:w-1/6 sm:place-items-center">
+              <button className="h-full rounded-lg text-white shadow-sky-200 drop-shadow-2xl transition-shadow active:shadow-none sm:w-16 sm:bg-sky-500 sm:shadow-inner md:w-24">
+                <span className="hidden sm:block">Send</span>
+                <FaArrowRight className="text-gray-800 sm:hidden" />
               </button>
             </div>
           </div>
