@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ChatMessages from "../components/ChatMessages";
 
 const Chat = () => {
   const [chatLog, setChatLog] = useState([
@@ -18,10 +19,7 @@ const Chat = () => {
         {/* Chat box */}
         <div className="h-[500px] overflow-auto rounded-t-lg bg-sky-100">
           {chatLog.map((chat, index) => (
-            <div key={index} className="flex h-fit w-full bg-sky-50">
-              <div className="w-1 bg-green-500"></div>
-              <div className="w-full p-3">{chat.message}</div>
-            </div>
+            <ChatMessages key={index} message={chat.message} role={chat.role} />
           ))}
         </div>
 
