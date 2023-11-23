@@ -4,6 +4,7 @@ import {
   FaFacebook,
   FaInstagram,
   FaTwitter,
+  FaCheck,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import onlineTest from "../assets/online_test.svg";
@@ -74,12 +75,15 @@ const Home = () => {
           </p>
         </div>
 
-        <Link className="mx-auto mt-8 flex items-center gap-4 rounded-md bg-sky-500 px-6 py-3 text-lg font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400  focus:ring-offset-2">
+        <Link
+          to="/register"
+          className="mx-auto mt-8 flex items-center gap-4 rounded-md bg-sky-500 px-6 py-3 text-lg font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400  focus:ring-offset-2"
+        >
           <span>Get Started</span> <FaArrowRight />
         </Link>
       </section>
 
-      {/* <!-- Video section --> */}
+      {/* <!-- Image section --> */}
       <section className="w-full">
         <div className="relative h-full w-full">
           <div className="relative z-30 mx-auto w-4/5 max-w-5xl overflow-hidden rounded-xl px-4 sm:w-full sm:px-8">
@@ -162,7 +166,7 @@ const Home = () => {
       </section>
 
       {/* <!-- Metrics section --> */}
-      <section className="relatvie z-20 w-full">
+      <section className="relative z-20 w-full">
         <div className="relative -top-24 mx-auto flex max-w-5xl flex-col px-4 pt-8 md:flex-row md:px-8">
           <div className="relative md:order-2 md:w-1/2">
             <div className="mx-auto w-full max-w-md">
@@ -192,69 +196,25 @@ const Home = () => {
               <ul className="grid grid-cols-1 gap-4 py-8 text-green-800 md:grid-cols-2">
                 <li className="flex">
                   <div className="mr-2 h-6 w-6 rounded-full bg-green-50 p-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <FaCheck size="0.9em" />
                   </div>
                   Report Summaries
                 </li>
                 <li className="flex">
                   <div className="mr-2 h-6 w-6 rounded-full bg-green-50 p-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <FaCheck size="0.9em" />
                   </div>
                   Symptom tracking
                 </li>
                 <li className="flex">
                   <div className="mr-2 h-6 w-6 rounded-full bg-green-50 p-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <FaCheck size="0.9em" />
                   </div>
                   Hospital Liason
                 </li>
                 <li className="flex">
                   <div className="mr-2 h-6 w-6 rounded-full bg-green-50 p-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <FaCheck size="0.9em" />
                   </div>
                   On/offboarding
                 </li>
