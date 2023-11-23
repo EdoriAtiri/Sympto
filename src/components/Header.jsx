@@ -23,7 +23,10 @@ const Header = () => {
           <div className="hidden md:block">
             <ul className="flex cursor-pointer items-center space-x-8 text-lg lg:space-x-12">
               <li className="group relative">
-                <Link className="rounded-md px-2 py-1 focus:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2">
+                <Link
+                  to="/"
+                  className="rounded-md px-2 py-1 focus:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2"
+                >
                   Home
                 </Link>
               </li>

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import ChatMessages from "../components/ChatMessages";
 import { FaArrowRight } from "react-icons/fa";
+import Header from "../components/Header";
 
 const Chat = () => {
   const [input, setInput] = useState("");
@@ -61,7 +62,8 @@ const Chat = () => {
 
   return (
     <div className="relative min-h-screen w-full bg-sky-200">
-      <div className="tranform absolute left-1/2 top-1/2 w-3/4 -translate-x-1/2 -translate-y-1/2 [&>*]:border-b [&>*]:border-sky-500">
+      <Header />
+      <div className="tranform absolute bottom-7 left-1/2 w-3/4 -translate-x-1/2  [&>*]:border-b [&>*]:border-sky-500">
         {/* Chat box */}
         <div
           ref={chatBoxRef}
