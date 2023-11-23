@@ -2,12 +2,17 @@ import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import { useState } from "react";
+import MobileNav from "./MobileNav";
 
 const Header = () => {
   const [isMobileMenu, setIsMobileMenu] = useState(false);
 
+  const close = () => {
+    setIsMobileMenu(false);
+  };
   return (
     <nav className="bg-white text-sm text-gray-500">
+      {isMobileMenu && <MobileNav close={close} />}
       <div className="relative mx-auto max-w-6xl">
         <div className="flex items-center justify-between p-4">
           <div>
@@ -52,10 +57,7 @@ const Header = () => {
 
           {/* Mobile Hamburger */}
           {
-            <button
-              onClick={() => setIsMobileMenu(!isMobileMenu)}
-              className="md:hidden"
-            >
+            <button onClick={() => setIsMobileMenu(true)} className="md:hidden">
               {isMobileMenu ? (
                 <FaTimes size="2.5em" />
               ) : (
