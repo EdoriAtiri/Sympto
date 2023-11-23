@@ -70,7 +70,7 @@ const Home = () => {
               </h2>
               <p className="mt-4 text-lg text-gray-300">
                 Say goodbye to uncertainty and hello to informed decisions about
-                your health. With our AI-powered chatbot.
+                your health.
               </p>
             </div>
             <div className="mx-[15vw] mt-6 sm:mx-0 sm:mt-0 sm:pr-16">
