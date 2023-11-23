@@ -1,16 +1,22 @@
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
+import { FaPlus, FaTimes } from "react-icons/fa";
+import { useState } from "react";
 
 const Header = () => {
+  const [isMobileMenu, setIsMobileMenu] = useState(false);
+
   return (
     <nav className="bg-white text-sm text-gray-500">
       <div className="relative mx-auto max-w-6xl">
         <div className="flex items-center justify-between p-4">
-          <Link className="rounded-full p-1 focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2">
-            <Logo />
-          </Link>
-          <div className="hidden lg:block">
-            <ul className="flex cursor-pointer items-center space-x-12 text-lg">
+          <div>
+            <Link className="rounded-full focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2">
+              <Logo />
+            </Link>
+          </div>
+          <div className="hidden md:block">
+            <ul className="flex cursor-pointer items-center space-x-8 text-lg lg:space-x-12">
               <li className="group relative">
                 <Link className="rounded-md px-2 py-1 focus:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2">
                   Home
@@ -29,20 +35,34 @@ const Header = () => {
             </ul>
           </div>
 
-          <div className="flex gap-3">
+          <div className="hidden gap-3 md:flex">
             <Link
               to="#"
-              className="hidden items-center justify-center rounded-md bg-white px-4 py-2 text-lg font-medium text-sky-500 hover:bg-sky-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 lg:flex"
+              className="items-center justify-center rounded-md bg-white px-4 py-2 text-lg font-medium text-sky-500 hover:bg-sky-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 lg:flex"
             >
               Login
             </Link>
             <Link
               to="#"
-              className="hidden items-center justify-center rounded-md bg-sky-500 px-4 py-2 text-lg font-medium text-white hover:bg-sky-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 lg:flex"
+              className="items-center justify-center rounded-md bg-sky-500 px-4 py-2 text-lg font-medium text-white hover:bg-sky-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 lg:flex"
             >
               Register
             </Link>
           </div>
+
+          {/* Mobile Hamburger */}
+          {
+            <button
+              onClick={() => setIsMobileMenu(!isMobileMenu)}
+              className="md:hidden"
+            >
+              {isMobileMenu ? (
+                <FaTimes size="2.5em" />
+              ) : (
+                <FaPlus size="2.5em" />
+              )}
+            </button>
+          }
         </div>
       </div>
     </nav>
