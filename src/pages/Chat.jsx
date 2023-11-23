@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChatMessages from "../components/ChatMessages";
 
 const Chat = () => {
+  const [input, setInput] = useState("");
   const [chatLog, setChatLog] = useState([
     {
       role: "gpt",
-      message: "how can i help you",
+      message: "how can i help you?",
     },
     {
       role: "user",
       message: "i want to use chatgpt today",
     },
   ]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let newChatLog = [...chatLog, { role: "user", message: `${input}` }];
+
+    setInput("");
+
+    setChatLog(newChatLog);
+  };
+
+  useEffect(() => {
+    console.log(chatLog);
+  }, [chatLog]);
 
   return (
     <div className="relative min-h-screen w-full bg-sky-200">
@@ -24,12 +38,13 @@ const Chat = () => {
         </div>
 
         {/* input */}
-
-        <form action="" className="">
+        <form onSubmit={handleSubmit} className="">
           <div className="flex h-20 w-full rounded-b-lg bg-white px-4 py-4 text-lg font-bold shadow-xl shadow-sky-400">
             <input
               className="h-full w-5/6 rounded-lg outline-none"
               type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
               placeholder="message"
             />
             <div className="grid h-full w-1/6 place-items-center">
