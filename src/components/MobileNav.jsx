@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
 const MobileNav = ({ close }) => {
+  const { userAuth } = useSelector((state) => state.auth);
+
   return (
     <div className="absolute inset-0 z-50 h-full w-full">
       {/* Dark overlay */}
@@ -27,16 +30,30 @@ const MobileNav = ({ close }) => {
               About
             </Link>
           </li>
-          <li className="border-b  text-xl font-bold hover:border-sky-500 focus:border-sky-500">
-            <Link onClick={close} className="block w-full p-2" to="/login">
-              Login
-            </Link>
-          </li>
-          <li className=" text-xl font-bold hover:border-b hover:border-sky-500 focus:border-sky-500">
-            <Link onClick={close} className="block w-full p-2" to="/register">
-              Register
-            </Link>
-          </li>
+          {userAuth ? (
+            <li className=" text-xl font-bold hover:border-b hover:border-sky-500 focus:border-sky-500">
+              <Link onClick={close} className="block w-full p-2" to="/profile">
+                Profile
+              </Link>
+            </li>
+          ) : (
+            <div className="flex flex-col gap-3">
+              <li className="border-b  text-xl font-bold hover:border-sky-500 focus:border-sky-500">
+                <Link onClick={close} className="block w-full p-2 " to="/login">
+                  Login
+                </Link>
+              </li>
+              <li className=" text-xl font-bold hover:border-b hover:border-sky-500 focus:border-sky-500">
+                <Link
+                  onClick={close}
+                  className="block w-full p-2"
+                  to="/register"
+                >
+                  Register
+                </Link>
+              </li>
+            </div>
+          )}
         </ul>
       </div>
     </div>

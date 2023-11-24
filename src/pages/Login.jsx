@@ -49,6 +49,10 @@ const Login = () => {
     console.log(formInput);
   };
 
+  if (isLoading) {
+    return <div>loading...</div>;
+  }
+
   return (
     <div>
       <main className="flex h-screen w-full flex-col items-center justify-center px-4">

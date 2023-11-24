@@ -12,7 +12,6 @@ const register = async (data) => {
 
 // Login user
 const login = async (data) => {
-  console.log(data);
   const response = await axios.post(API_URL + "authenticate/user/login", data);
 
   if (response.data) {
