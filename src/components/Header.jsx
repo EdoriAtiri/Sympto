@@ -13,6 +13,8 @@ const Header = () => {
   const { userAuth } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
+  const logout = () => {};
+
   const close = () => {
     setIsMobileMenu(false);
   };
@@ -69,12 +71,15 @@ const Header = () => {
               {isUserMenu && (
                 <div className="absolute right-0  h-fit w-40 bg-white shadow-lg">
                   <button
-                    onClick={navigate("/profile")}
                     className="flex w-full items-center gap-2 border-b p-3 text-left text-xl font-bold transition-all hover:border-sky-500 hover:text-sky-500 focus:border-sky-500"
+                    onClick={() => navigate("/profile")}
                   >
                     <FaUserCircle /> Profile
                   </button>
-                  <button className="flex w-full items-center gap-2 border-b p-3 text-left text-xl font-bold transition-all hover:border-sky-500 hover:text-sky-500 focus:border-sky-500">
+                  <button
+                    onClick={logout}
+                    className="flex w-full items-center gap-2 border-b p-3 text-left text-xl font-bold transition-all hover:border-sky-500 hover:text-sky-500 focus:border-sky-500"
+                  >
                     <FaSignOutAlt /> Logout
                   </button>
                 </div>
