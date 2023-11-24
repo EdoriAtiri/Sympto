@@ -1,15 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Logo from "./Logo";
-import { FaPlus, FaTimes } from "react-icons/fa";
+import { FaPlus, FaSignOutAlt, FaTimes, FaUserCircle } from "react-icons/fa";
 import { useState } from "react";
 import MobileNav from "./MobileNav";
 import UserIcon from "./UserIcon";
 
 const Header = () => {
   const [isMobileMenu, setIsMobileMenu] = useState(false);
+  const [isUserMenu, setIsUserMenu] = useState(false);
 
   const { userAuth } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   const close = () => {
     setIsMobileMenu(false);
@@ -50,10 +52,34 @@ const Header = () => {
             </ul>
           </div>
 
+          {/*  close user menu */}
+          {isUserMenu && (
+            <button
+              onClick={() => setIsUserMenu(false)}
+              className="absolute left-0 top-0 z-40 h-screen w-full bg-transparent"
+            ></button>
+          )}
           {userAuth ? (
-            <button className="hidden md:block">
-              <UserIcon />
-            </button>
+            <div className="relative z-50 hidden md:block">
+              <button className="" onClick={() => setIsUserMenu(!isUserMenu)}>
+                <UserIcon />
+              </button>
+
+              {/* user menu */}
+              {isUserMenu && (
+                <div className="absolute right-0  h-fit w-40 bg-white shadow-lg">
+                  <button
+                    onClick={navigate("/profile")}
+                    className="flex w-full items-center gap-2 border-b p-3 text-left text-xl font-bold transition-all hover:border-sky-500 hover:text-sky-500 focus:border-sky-500"
+                  >
+                    <FaUserCircle /> Profile
+                  </button>
+                  <button className="flex w-full items-center gap-2 border-b p-3 text-left text-xl font-bold transition-all hover:border-sky-500 hover:text-sky-500 focus:border-sky-500">
+                    <FaSignOutAlt /> Logout
+                  </button>
+                </div>
+              )}
+            </div>
           ) : (
             <div className="hidden gap-3 md:flex">
               <Link
