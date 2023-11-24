@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -7,8 +8,10 @@ import Chat from "./pages/Chat";
 function App() {
   return (
     <>
+      <ToastContainer />
+
       <Router>
-        <div className="font-montserrat min-h-screen w-full">
+        <div className="min-h-screen w-full font-montserrat">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
