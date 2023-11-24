@@ -1,8 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import Logo from "./Logo";
-import { FaPlus, FaSignOutAlt, FaTimes, FaUserCircle } from "react-icons/fa";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { FaPlus, FaSignOutAlt, FaTimes, FaUserCircle } from "react-icons/fa";
+import { logout, reset } from "../features/Auth/authSlice";
+import Logo from "./Logo";
 import MobileNav from "./MobileNav";
 import UserIcon from "./UserIcon";
 
@@ -12,9 +13,14 @@ const Header = () => {
 
   const { userAuth } = useSelector((state) => state.auth);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const logout = () => {};
-
+  const onLogout = () => {
+    close();
+    dispatch(logout());
+    dispatch(reset());
+    window.location.reload(false);
+  };
   const close = () => {
     setIsMobileMenu(false);
   };
@@ -77,7 +83,7 @@ const Header = () => {
                     <FaUserCircle /> Profile
                   </button>
                   <button
-                    onClick={logout}
+                    onClick={onLogout}
                     className="flex w-full items-center gap-2 border-b p-3 text-left text-xl font-bold transition-all hover:border-sky-500 hover:text-sky-500 focus:border-sky-500"
                   >
                     <FaSignOutAlt /> Logout

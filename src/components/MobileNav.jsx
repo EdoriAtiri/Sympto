@@ -1,9 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logout, reset } from "../features/Auth/authSlice";
 
 const MobileNav = ({ close }) => {
   const { userAuth } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const onLogout = () => {
+    close();
+    dispatch(logout());
+    dispatch(reset());
+    window.location.reload(false);
+  };
 
   return (
     <div className="absolute inset-0 z-50 h-full w-full">
@@ -34,7 +44,7 @@ const MobileNav = ({ close }) => {
             <div className="flex flex-col gap-3">
               <li className="border-b text-xl font-bold hover:border-b hover:border-sky-500 focus:border-sky-500">
                 <Link
-                  onClick={close}
+                  onClick={(() => navigate("/profile"), close)}
                   className="block w-full p-2 "
                   to="/profile"
                 >
@@ -42,7 +52,10 @@ const MobileNav = ({ close }) => {
                 </Link>
               </li>
               <li className=" text-xl font-bold hover:border-b hover:border-sky-500 focus:border-sky-500">
-                <button onClick={close} className="block w-full p-2 text-left">
+                <button
+                  onClick={onLogout}
+                  className="block w-full p-2 text-left"
+                >
                   Logout
                 </button>
               </li>
