@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { register, reset } from "../features/Auth/authSlice";
 
 const Register = () => {
-  const [userLocation, setUserLocation] = useState(null);
   const [formInput, setFormInput] = useState({
     first_name: "",
     last_name: "",
     username: "",
     gender: "",
-    phone_no: "",
+    phone_number: "",
     email: "",
     password: "",
     password2: "",
@@ -22,12 +24,18 @@ const Register = () => {
     last_name,
     username,
     gender,
-    phone_no,
+    phone_number,
     email,
     password,
     password2,
+    lat,
+    lon,
   } = formInput;
 
+  const dispatch = useDispatch();
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth,
+  );
   // Get location - geoLocation is async, so we need to wait for it to complete before continuing, hence the promise. which is used in the useEffect
   const getUserLocation = () => {
     return new Promise((resolve, reject) => {
@@ -35,7 +43,7 @@ const Register = () => {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const { latitude, longitude } = position.coords;
-            setUserLocation({ lat: latitude, lon: longitude });
+            // setUserLocation({ lat: latitude, lon: longitude });
             resolve({ lat: latitude, lon: longitude });
           },
           (error) => {
@@ -61,10 +69,21 @@ const Register = () => {
     e.preventDefault();
 
     if (password !== password2) {
-      console.log("passwords do not match");
-    }
+      toast.error("passwords do not match");
+    } else {
+      const data = {
+        first_name,
+        last_name,
+        email,
+        password,
+        gender,
+        username,
+        phone_number,
+      };
 
-    console.log(formInput);
+      dispatch(register(data));
+      console.log(formInput);
+    }
   };
 
   useEffect(() => {
@@ -83,7 +102,23 @@ const Register = () => {
       });
   }, []);
 
-  //  <button className="h-5 w-5 bg-blue-700" onClick={getUserLocation}></button>;
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
+    // Redirect when logged in
+    if (isSuccess) {
+      // navigate("/dashboard/events");
+      toast.success("success");
+    }
+
+    dispatch(reset());
+  }, [isError, message, isSuccess, user, dispatch]);
 
   return (
     <div>
@@ -172,10 +207,10 @@ const Register = () => {
               <label className="font-medium">Phone No.</label>
               <input
                 onChange={onChange}
-                type="phone_no"
-                id="phone_no"
-                name="phone_no"
-                value={phone_no}
+                type="phone_number"
+                id="phone_number"
+                name="phone_number"
+                value={phone_number}
                 required
                 className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
               />
