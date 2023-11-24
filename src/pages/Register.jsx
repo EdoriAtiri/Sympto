@@ -245,7 +245,7 @@ const Register = () => {
             </div>
 
             <button className="w-full rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white duration-150 hover:bg-indigo-500 active:bg-indigo-600">
-              Sign in
+              Register{" "}
             </button>
           </form>
           {/* <button className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 text-sm font-medium duration-150 hover:bg-gray-50 active:bg-gray-100">
