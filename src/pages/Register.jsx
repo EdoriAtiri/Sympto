@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Logo from "../components/Logo";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { register, reset } from "../features/Auth/authSlice";
@@ -32,8 +32,9 @@ const Register = () => {
     lon,
   } = formInput;
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
+  const { userAuth, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth,
   );
   // Get location - geoLocation is async, so we need to wait for it to complete before continuing, hence the promise. which is used in the useEffect
@@ -79,6 +80,8 @@ const Register = () => {
         gender,
         username,
         phone_number,
+        lat,
+        lon,
       };
 
       dispatch(register(data));
@@ -113,12 +116,12 @@ const Register = () => {
 
     // Redirect when logged in
     if (isSuccess) {
-      // navigate("/dashboard/events");
+      navigate("/login");
       toast.success("success");
     }
 
     dispatch(reset());
-  }, [isError, message, isSuccess, user, dispatch]);
+  }, [isError, message, isSuccess, userAuth, dispatch, navigate]);
 
   return (
     <div>
