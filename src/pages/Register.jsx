@@ -1,15 +1,54 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+  const [userLocation, setUserLocation] = useState(null);
   const [formInput, setFormInput] = useState({
+    first_name: "",
+    last_name: "",
+    username: "",
+    gender: "",
+    phone_no: "",
     email: "",
     password: "",
     password2: "",
+    lat: "",
+    lon: "",
   });
 
-  const { email, password, password2 } = formInput;
+  const {
+    first_name,
+    last_name,
+    username,
+    gender,
+    phone_no,
+    email,
+    password,
+    password2,
+  } = formInput;
+
+  // Get location - geoLocation is async, so we need to wait for it to complete before continuing, hence the promise. which is used in the useEffect
+  const getUserLocation = () => {
+    return new Promise((resolve, reject) => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            setUserLocation({ lat: latitude, lon: longitude });
+            resolve({ lat: latitude, lon: longitude });
+          },
+          (error) => {
+            console.error("Error getting user location:", error);
+            reject(error);
+          },
+        );
+      } else {
+        console.error("Geolocation is not supported by this browser.");
+        reject("Geolocation not supported");
+      }
+    });
+  };
 
   const onChange = (e) => {
     setFormInput((prev) => ({
@@ -28,11 +67,29 @@ const Register = () => {
     console.log(formInput);
   };
 
+  useEffect(() => {
+    // Get user location on launch
+    getUserLocation()
+      .then((location) => {
+        setFormInput((prev) => ({
+          ...prev,
+          lat: location.lat,
+          lon: location.lon,
+        }));
+        console.log("User location on mount:", location);
+      })
+      .catch((error) => {
+        console.error("Error getting user location on mount:", error);
+      });
+  }, []);
+
+  //  <button className="h-5 w-5 bg-blue-700" onClick={getUserLocation}></button>;
+
   return (
     <div>
-      <main className="flex h-screen w-full flex-col items-center justify-center px-4">
-        <div className="w-full max-w-sm space-y-5 text-gray-600">
-          <div className="pb-8 text-center">
+      <main className="flex w-full flex-col items-center justify-center px-4 py-6">
+        <div className="w-full max-w-sm space-y-3 text-gray-600">
+          <div className="pb-4 text-center">
             <Logo />
             <div className="mt-5">
               <h3 className="text-2xl font-bold text-gray-800 sm:text-3xl">
@@ -41,7 +98,46 @@ const Register = () => {
             </div>
           </div>
 
-          <form onSubmit={onSubmit} className="space-y-5">
+          <form onSubmit={onSubmit} className="space-y-2">
+            <div>
+              <label className="font-medium">First Name</label>
+              <input
+                onChange={onChange}
+                type="first_name"
+                id="first_name"
+                name="first_name"
+                value={first_name}
+                required
+                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+              />
+            </div>
+
+            <div>
+              <label className="font-medium">Last Name</label>
+              <input
+                onChange={onChange}
+                type="last_name"
+                id="last_name"
+                name="last_name"
+                value={last_name}
+                required
+                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+              />
+            </div>
+
+            <div>
+              <label className="font-medium">Username</label>
+              <input
+                onChange={onChange}
+                type="username"
+                id="username"
+                name="username"
+                value={username}
+                required
+                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+              />
+            </div>
+
             <div>
               <label className="font-medium">Email</label>
               <input
@@ -54,6 +150,37 @@ const Register = () => {
                 className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
               />
             </div>
+
+            <div>
+              <label className="font-medium">Gender</label>
+              <select
+                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+                name="gender"
+                id="gender"
+                value={gender}
+                onChange={onChange}
+              >
+                <option value="" disabled defaultValue hidden>
+                  Select Gender
+                </option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="font-medium">Phone No.</label>
+              <input
+                onChange={onChange}
+                type="phone_no"
+                id="phone_no"
+                name="phone_no"
+                value={phone_no}
+                required
+                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+              />
+            </div>
+
             <div>
               <label className="font-medium">Password</label>
               <input
@@ -83,7 +210,7 @@ const Register = () => {
               Sign in
             </button>
           </form>
-          <button className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 text-sm font-medium duration-150 hover:bg-gray-50 active:bg-gray-100">
+          {/* <button className="flex w-full items-center justify-center gap-x-3 rounded-lg border py-2.5 text-sm font-medium duration-150 hover:bg-gray-50 active:bg-gray-100">
             <svg
               className="h-5 w-5"
               viewBox="0 0 48 48"
@@ -115,7 +242,7 @@ const Register = () => {
               </defs>
             </svg>{" "}
             Continue with Google
-          </button>
+          </button> */}
           <p className="text-center">
             Already have an account?{" "}
             <Link
