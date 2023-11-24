@@ -4,6 +4,7 @@ import Logo from "./Logo";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import { useState } from "react";
 import MobileNav from "./MobileNav";
+import UserIcon from "./UserIcon";
 
 const Header = () => {
   const [isMobileMenu, setIsMobileMenu] = useState(false);
@@ -50,7 +51,9 @@ const Header = () => {
           </div>
 
           {userAuth ? (
-            <button className="hidden md:block">profile</button>
+            <button className="hidden md:block">
+              <UserIcon />
+            </button>
           ) : (
             <div className="hidden gap-3 md:flex">
               <Link

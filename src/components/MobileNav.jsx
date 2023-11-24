@@ -31,11 +31,22 @@ const MobileNav = ({ close }) => {
             </Link>
           </li>
           {userAuth ? (
-            <li className=" text-xl font-bold hover:border-b hover:border-sky-500 focus:border-sky-500">
-              <Link onClick={close} className="block w-full p-2" to="/profile">
-                Profile
-              </Link>
-            </li>
+            <div className="flex flex-col gap-3">
+              <li className="border-b text-xl font-bold hover:border-b hover:border-sky-500 focus:border-sky-500">
+                <Link
+                  onClick={close}
+                  className="block w-full p-2 "
+                  to="/profile"
+                >
+                  Profile
+                </Link>
+              </li>
+              <li className=" text-xl font-bold hover:border-b hover:border-sky-500 focus:border-sky-500">
+                <button onClick={close} className="block w-full p-2 text-left">
+                  Logout
+                </button>
+              </li>
+            </div>
           ) : (
             <div className="flex flex-col gap-3">
               <li className="border-b  text-xl font-bold hover:border-sky-500 focus:border-sky-500">
