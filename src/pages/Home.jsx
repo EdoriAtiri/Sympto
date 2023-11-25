@@ -27,10 +27,10 @@ const Home = () => {
             Navigate Your Health Journey with AI Wisdom
           </h1>
           <p className="pt-6 text-xl font-light text-gray-400">
-            SymptoSage is your AI companion for instant symptom insights and
-            medical guidance. Unlock the power of AI-driven conversations,
-            providing you with rapid responses and informed suggestions. Your
-            virtual health advisor is just a chat away!
+            AskDoc is your AI companion for instant symptom insights and medical
+            guidance. Unlock the power of AI-driven conversations, providing you
+            with rapid responses and informed suggestions. Your virtual health
+            advisor is just a chat away!
           </p>
         </div>
 
@@ -98,7 +98,7 @@ const Home = () => {
               <div className="absolute top-6 z-0 hidden w-full border-b-2 border-gray-600 sm:block"></div>
               <div className="mb-10 ml-6 w-auto sm:mb-0 sm:ml-0 sm:mr-6">
                 <h3 className="text-gray-100 sm:mt-4">
-                  Share symptoms with SymptoSage
+                  Share symptoms with AskDoc
                 </h3>
                 <p className="mt-2 text-gray-300">
                   through an intuitive conversation discuss your symptoms with
@@ -229,7 +229,7 @@ const Home = () => {
             </a>
           </div>
           <p className="mt-8 text-center text-base text-gray-200">
-            &copy; 2023<a href="#"> SymptoSage</a>, Inc. All rights reserved.
+            &copy; 2023<a href="#"> AskDoc</a>, Inc. All rights reserved.
           </p>
         </div>
       </footer>
