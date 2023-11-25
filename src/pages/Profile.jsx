@@ -71,19 +71,6 @@ const Profile = () => {
                   className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
                 />
               </div>
-
-              <div>
-                <label className="font-medium">Medical Record</label>
-                <input
-                  onChange={onChange}
-                  type="text"
-                  name="medical_records"
-                  id="medical_records"
-                  value={medical_records}
-                  required
-                  className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
-                />
-              </div>
             </div>
 
             <div className="space-y-2">
@@ -129,6 +116,21 @@ const Profile = () => {
                 </select>
               </div>
             </div>
+          </div>
+
+          <div className="w-full">
+            <label className="font-medium">Medical Record</label>
+            <textarea
+              onChange={onChange}
+              type="text"
+              name="medical_records"
+              id="medical_records"
+              value={medical_records}
+              required
+              className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+              rows="4"
+            ></textarea>
+            <input />
           </div>
 
           <div className="w-full lg:mt-4 lg:flex lg:justify-center">
