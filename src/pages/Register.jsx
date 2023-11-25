@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { register, reset } from "../features/Auth/authSlice";
+import Loading from "../components/Loading";
 
 const Register = () => {
   const [formInput, setFormInput] = useState({
@@ -125,6 +126,8 @@ const Register = () => {
 
   return (
     <div>
+      {isLoading && <Loading />}
+
       <main className="flex w-full flex-col items-center justify-center px-4 py-6">
         <div className="w-full max-w-sm space-y-3 text-gray-600">
           <div className="pb-4 text-center">
@@ -141,7 +144,7 @@ const Register = () => {
               <label className="font-medium">First Name</label>
               <input
                 onChange={onChange}
-                type="first_name"
+                type="text"
                 id="first_name"
                 name="first_name"
                 value={first_name}
@@ -154,7 +157,7 @@ const Register = () => {
               <label className="font-medium">Last Name</label>
               <input
                 onChange={onChange}
-                type="last_name"
+                type="text"
                 id="last_name"
                 name="last_name"
                 value={last_name}
@@ -167,7 +170,7 @@ const Register = () => {
               <label className="font-medium">Username</label>
               <input
                 onChange={onChange}
-                type="username"
+                type="text"
                 id="username"
                 name="username"
                 value={username}
@@ -210,7 +213,7 @@ const Register = () => {
               <label className="font-medium">Phone No.</label>
               <input
                 onChange={onChange}
-                type="phone_number"
+                type="tel"
                 id="phone_number"
                 name="phone_number"
                 value={phone_number}

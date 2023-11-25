@@ -50,12 +50,9 @@ const Login = () => {
     console.log(formInput);
   };
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
   return (
     <div>
+      {isLoading && <Loading />}
       <main className="flex h-screen w-full flex-col items-center justify-center px-4">
         <div className="w-full max-w-sm space-y-5 text-gray-600">
           <div className="pb-8 text-center">
