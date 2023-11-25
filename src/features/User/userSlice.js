@@ -15,9 +15,10 @@ export const createProfile = createAsyncThunk(
   "user/create",
   async (userData, thunkAPI) => {
     const currentUser = thunkAPI.getState.userAuth;
+    const token = thunkAPI.getState.userAuth.tokens.access;
     userData.user = currentUser;
     try {
-      return await userService.createProfile(userData);
+      return await userService.createProfile(userData, token);
     } catch (error) {
       const message =
         (error.response &&

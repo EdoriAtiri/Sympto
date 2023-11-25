@@ -1,9 +1,20 @@
 import axios from "axios";
 const API_URL = import.meta.env.VITE_BASEURL;
 
-// Signup user
-const createProfile = async (userData) => {
-  const response = await axios.post(API_URL + "create/user/profile/", userData);
+// create user profile
+const createProfile = async (userData, token) => {
+  console.log(userData, token);
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.post(
+    API_URL + "create/user/profile/",
+    userData,
+    config,
+  );
 
   console.log(response);
 
