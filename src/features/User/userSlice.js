@@ -63,11 +63,11 @@ export const getUserProfile = createAsyncThunk(
 // edit user profile
 export const editUserProfile = createAsyncThunk(
   "user/edit",
-  async (user, thunkAPI) => {
+  async ({ user, data }, thunkAPI) => {
     const token = thunkAPI.getState().auth.userAuth.tokens.access;
 
     try {
-      return await userService.editUserProfile(user, token);
+      return await userService.editUserProfile(user, data, token);
     } catch (error) {
       const message =
         (error.response &&

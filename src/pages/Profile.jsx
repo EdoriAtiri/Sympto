@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import Header from "../components/Header";
 import {
   createProfile,
+  editUserProfile,
   getUserProfile,
   reset,
 } from "../features/User/userSlice";
@@ -79,6 +80,14 @@ const Profile = () => {
 
     if (!isEdit) {
       dispatch(createProfile(profileData));
+    }
+
+    if (isEdit) {
+      const data = {
+        data: profileData,
+        user: userAuth.user,
+      };
+      dispatch(editUserProfile(data));
     }
 
     if (isSuccess) {
