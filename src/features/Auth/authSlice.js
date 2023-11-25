@@ -125,7 +125,7 @@ export const authSlice = createSlice({
       //   state.isError = true;
       // });
       .addCase(logout.fulfilled, (state) => {
-        state.user = null;
+        state.userAuth = null;
       });
   },
 });

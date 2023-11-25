@@ -12,7 +12,7 @@ const MobileNav = ({ close }) => {
     close();
     dispatch(logout());
     dispatch(reset());
-    window.location.reload(false);
+    navigate("/");
   };
 
   return (
