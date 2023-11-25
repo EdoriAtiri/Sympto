@@ -35,9 +35,28 @@ const getUserProfile = async (user, token) => {
   return response.data;
 };
 
+const editUserProfile = async (user, data, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.patch(
+    `${API_URL}profile/update/${user}`,
+    data,
+    config,
+  );
+
+  console.log(response);
+
+  return response.data;
+};
+
 const authService = {
   createProfile,
   getUserProfile,
+  editUserProfile,
 };
 
 export default authService;

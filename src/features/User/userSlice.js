@@ -62,7 +62,7 @@ export const getUserProfile = createAsyncThunk(
 
 // edit user profile
 export const editUserProfile = createAsyncThunk(
-  "user/get",
+  "user/edit",
   async (user, thunkAPI) => {
     const token = thunkAPI.getState().auth.userAuth.tokens.access;
 
@@ -120,6 +120,19 @@ export const userSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(getUserProfile.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(editUserProfile.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(editUserProfile.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = action.payload;
+      })
+      .addCase(editUserProfile.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
