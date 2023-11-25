@@ -28,7 +28,7 @@ const getUserProfile = async (user, token) => {
     },
   };
 
-  const response = await axios.post(`${API_URL}profile/get/${user}`, config);
+  const response = await axios.get(`${API_URL}profile/get/${user}`, config);
 
   console.log(response);
 

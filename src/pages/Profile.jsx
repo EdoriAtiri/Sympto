@@ -2,38 +2,48 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Header from "../components/Header";
-import { createProfile, reset } from "../features/User/userSlice";
+import {
+  createProfile,
+  getUserProfile,
+  reset,
+} from "../features/User/userSlice";
 import Loading from "../components/Loading";
 
 const Profile = () => {
+  const [isEdit, setIsEdit] = useState(false);
   const [profileData, setProfileData] = useState({
-    age: "40",
-    blood_group: "O",
-    height: "1.5",
-    weight: "55",
-    genotype: "AS",
-    medical_records: "ejknjen",
+    age: "",
+    blood_group: "",
+    height: "",
+    weight: "",
+    genotype: "",
+    Medical_records: "",
   });
 
-  const { age, blood_group, height, weight, genotype, medical_records } =
+  const { age, blood_group, height, weight, genotype, Medical_records } =
     profileData;
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.user,
   );
+  const { userAuth } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(reset());
+    dispatch(getUserProfile(userAuth.user));
+  }, [dispatch, userAuth.user]);
 
+  useEffect(() => {
+    if (user) {
+      setIsEdit(true);
+      setProfileData(user);
+    }
+  }, [user]);
+
+  useEffect(() => {
     if (isError) {
       toast.error(message);
-    }
-
-    // Redirect when logged in
-    if (isSuccess) {
-      toast.success("success");
     }
 
     dispatch(reset());
@@ -65,10 +75,18 @@ const Profile = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createProfile(profileData));
+    if (!isEdit) {
+      dispatch(createProfile(profileData));
+    }
 
-    console.log(profileData);
+    if (isSuccess) {
+      toast.success("success");
+    }
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div>
       {isLoading && <Loading />}
@@ -173,9 +191,9 @@ const Profile = () => {
             <textarea
               onChange={onChange}
               type="text"
-              name="medical_records"
-              id="medical_records"
-              value={medical_records}
+              name="Medical_records"
+              id="Medical_records"
+              value={Medical_records}
               required
               className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
               rows="4"
@@ -197,7 +215,7 @@ const Profile = () => {
 
           <div className="w-full lg:mt-4 lg:flex lg:justify-center">
             <button className="w-full rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white duration-150 hover:bg-indigo-500 active:bg-indigo-600 lg:w-96">
-              Save Profile
+              {isEdit ? "Edit Profile" : "Save Profile"}
             </button>
           </div>
         </form>

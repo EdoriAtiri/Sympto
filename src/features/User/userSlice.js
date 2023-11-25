@@ -40,8 +40,7 @@ export const createProfile = createAsyncThunk(
 // get user profile
 export const getUserProfile = createAsyncThunk(
   "user/get",
-  async (_, thunkAPI) => {
-    const user = thunkAPI.getState().auth.userAuth.user;
+  async (user, thunkAPI) => {
     const token = thunkAPI.getState().auth.userAuth.tokens.access;
 
     try {
