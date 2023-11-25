@@ -12,7 +12,7 @@ const initialState = {
 
 // create user profile
 export const createProfile = createAsyncThunk(
-  "auth/register",
+  "user/create",
   async (userData, thunkAPI) => {
     const currentUser = thunkAPI.getState.userAuth;
     userData.user = currentUser;
@@ -33,8 +33,8 @@ export const createProfile = createAsyncThunk(
   },
 );
 
-export const authSlice = createSlice({
-  name: "auth",
+export const userSlice = createSlice({
+  name: "user",
   initialState,
   reducers: {
     reset: (state) => {
@@ -63,5 +63,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { reset } = authSlice.actions;
-export default authSlice.reducer;
+export const { reset } = userSlice.actions;
+export default userSlice.reducer;

@@ -1,18 +1,26 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Header from "../components/Header";
+import { createProfile, reset } from "../features/User/userSlice";
 
 const Profile = () => {
   const [profileData, setProfileData] = useState({
     age: "",
-    bloog_group: "",
+    blood_group: "",
     height: "",
     weight: "",
     genotype: "",
     medical_records: "",
   });
 
-  const { age, bloog_group, height, weight, genotype, medical_records } =
+  const { age, blood_group, height, weight, genotype, medical_records } =
     profileData;
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.user,
+  );
+
+  const dispatch = useDispatch();
 
   const onChange = (e) => {
     setProfileData((prev) => ({
@@ -20,7 +28,14 @@ const Profile = () => {
       [e.target.name]: e.target.value,
     }));
   };
-  const onSubmit = () => {};
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(createProfile(profileData));
+
+    console.log(profileData);
+  };
   return (
     <div>
       <Header />
@@ -78,9 +93,9 @@ const Profile = () => {
                 <label className="font-medium">Blood Group</label>
                 <select
                   className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
-                  name="bloog_group"
-                  id="bloog_group"
-                  value={bloog_group}
+                  name="blood_group"
+                  id="blood_group"
+                  value={blood_group}
                   onChange={onChange}
                 >
                   <option value="" disabled defaultValue hidden>
