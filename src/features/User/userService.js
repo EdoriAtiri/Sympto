@@ -11,7 +11,7 @@ const createProfile = async (userData, token) => {
   };
 
   const response = await axios.post(
-    API_URL + "create/user/profile/",
+    "https://askdoc.onrender.com/askdoc/v1/create/user/profile",
     userData,
     config,
   );

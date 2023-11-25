@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import Header from "../components/Header";
 import { createProfile, reset } from "../features/User/userSlice";
+import Loading from "../components/Loading";
 
 const Profile = () => {
   const [profileData, setProfileData] = useState({
-    age: "",
-    blood_group: "",
-    height: "",
-    weight: "",
-    genotype: "",
-    medical_records: "",
+    age: "40",
+    blood_group: "O",
+    height: "1.5",
+    weight: "55",
+    genotype: "AS",
+    medical_records: "ejknjen",
   });
 
   const { age, blood_group, height, weight, genotype, medical_records } =
@@ -22,7 +24,38 @@ const Profile = () => {
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(reset());
+
+    if (isError) {
+      toast.error(message);
+    }
+
+    // Redirect when logged in
+    if (isSuccess) {
+      toast.success("success");
+    }
+
+    dispatch(reset());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isError, message, isSuccess, user]);
+
   const onChange = (e) => {
+    // if (e.target.type === "file") {
+    //   const file = e.target.files[0];
+    //   if (file) {
+    //     // Read the file content and convert it to base64
+    //     const reader = new FileReader();
+    //     reader.onloadend = () => {
+    //       setProfileData((prev) => ({
+    //         ...prev,
+    //         image: reader.result, // Set the base64 string to the image field
+    //       }));
+    //     };
+    //     reader.readAsDataURL(file);
+    //   }
+    // }
+
     setProfileData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -38,6 +71,8 @@ const Profile = () => {
   };
   return (
     <div>
+      {isLoading && <Loading />}
+
       <Header />
 
       <main className="flex w-full flex-col items-center justify-center px-4 py-6">
@@ -147,6 +182,18 @@ const Profile = () => {
             ></textarea>
             <input />
           </div>
+
+          {/* <div>
+            <label className="font-medium">image</label>
+            <input
+              type="file"
+              className=""
+              id="image"
+              onChange={onChange}
+              max="1"
+              accept=".jpg,.png,.jpeg"
+            />
+          </div> */}
 
           <div className="w-full lg:mt-4 lg:flex lg:justify-center">
             <button className="w-full rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white duration-150 hover:bg-indigo-500 active:bg-indigo-600 lg:w-96">
