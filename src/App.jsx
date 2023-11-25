@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
 import PrivateRoute from "./components/PrivateRoute";
+import GetStarted from "./components/GetStarted";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
             </Route>
             <Route path="/profile" element={<PrivateRoute />}>
               <Route path="/profile" element={<Profile />} />
+            </Route>
+            <Route path="/getstarted" element={<PrivateRoute />}>
+              <Route path="/getstarted" element={<GetStarted />} />
             </Route>
           </Routes>
         </div>

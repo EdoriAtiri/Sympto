@@ -230,6 +230,7 @@ const Register = () => {
                 id="password"
                 name="password"
                 value={password}
+                min="6"
                 required
                 className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
               />

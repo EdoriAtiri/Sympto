@@ -9,9 +9,12 @@ import {
   reset,
 } from "../features/User/userSlice";
 import Loading from "../components/Loading";
+import { FaEdit } from "react-icons/fa";
 
 const Profile = () => {
+  const [isProfileLoaded, setIsProfileLoaded] = useState(false);
   const [isEdit, setIsEdit] = useState(null);
+  const [isDisabled, setIsDisabled] = useState(null);
   const [profileData, setProfileData] = useState({
     age: "",
     blood_group: "",
@@ -39,14 +42,14 @@ const Profile = () => {
     if (user) {
       setIsEdit(true);
       setProfileData(user);
+      setIsDisabled(true);
+      setIsProfileLoaded(true);
     }
   }, [user]);
 
   useEffect(() => {
-    if (isEdit !== null) {
-      if (isError) {
-        toast.error(message);
-      }
+    if (isError) {
+      setIsProfileLoaded(true);
     }
 
     dispatch(reset());
@@ -93,18 +96,34 @@ const Profile = () => {
     if (isSuccess) {
       toast.success("success");
     }
+    if (isError) {
+      toast.error(message);
+      setIsProfileLoaded(true);
+    }
   };
 
   return (
     <div>
-      {isLoading && <Loading />}
+      {isLoading || (!isProfileLoaded && <Loading />)}
 
       <Header />
 
       <main className="flex w-full flex-col items-center justify-center px-4 py-6">
-        <h1 className="mb-6 text-2xl font-bold uppercase md:text-3xl md:font-extrabold">
-          Profile
-        </h1>
+        <div className="mb-6 flex items-center gap-10">
+          <h1 className=" text-2xl font-bold uppercase md:text-3xl md:font-extrabold">
+            {isEdit
+              ? `${userAuth.username}'s Profile`
+              : "Complete Registration"}
+          </h1>
+          {isEdit && (
+            <button
+              onClick={() => setIsDisabled(false)}
+              className="text-gray-800 active:scale-95"
+            >
+              <FaEdit size="1.3em" />
+            </button>
+          )}
+        </div>
 
         <form onSubmit={onSubmit} className="flex flex-col gap-4">
           <div className="gap-8 space-y-2 lg:flex lg:space-y-0">
@@ -118,6 +137,7 @@ const Profile = () => {
                   name="age"
                   value={age}
                   required
+                  disabled={isDisabled}
                   className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
                 />
               </div>
@@ -131,6 +151,7 @@ const Profile = () => {
                   name="height"
                   value={height}
                   required
+                  disabled={isDisabled}
                   className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
                 />
               </div>
@@ -144,6 +165,7 @@ const Profile = () => {
                   name="weight"
                   value={weight}
                   required
+                  disabled={isDisabled}
                   className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
                 />
               </div>
@@ -158,6 +180,7 @@ const Profile = () => {
                   id="blood_group"
                   value={blood_group}
                   onChange={onChange}
+                  disabled={isDisabled}
                 >
                   <option value="" disabled defaultValue hidden>
                     Select your blood group
@@ -177,6 +200,7 @@ const Profile = () => {
                   name="genotype"
                   id="genotype"
                   value={genotype}
+                  disabled={isDisabled}
                   onChange={onChange}
                 >
                   <option value="" disabled defaultValue hidden>
@@ -202,7 +226,7 @@ const Profile = () => {
               name="Medical_records"
               id="Medical_records"
               value={Medical_records}
-              required
+              disabled={isDisabled}
               className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
               rows="4"
             ></textarea>

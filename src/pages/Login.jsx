@@ -27,8 +27,7 @@ const Login = () => {
 
     // Redirect when logged in
     if (userAuth) {
-      navigate("/chat");
-      console.log("success");
+      navigate("/getstarted");
     }
 
     dispatch(reset());
@@ -106,7 +105,7 @@ const Login = () => {
           <p className="text-center">
             Don&apos;t have an account?{" "}
             <Link
-              to="/login"
+              to="/register"
               className="font-medium text-indigo-600 hover:text-indigo-500"
             >
               sign up{" "}
