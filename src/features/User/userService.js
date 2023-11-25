@@ -21,8 +21,23 @@ const createProfile = async (userData, token) => {
   return response.data;
 };
 
+const getUserProfile = async (user, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.post(`${API_URL}profile/get/${user}`, config);
+
+  console.log(response);
+
+  return response.data;
+};
+
 const authService = {
   createProfile,
+  getUserProfile,
 };
 
 export default authService;
