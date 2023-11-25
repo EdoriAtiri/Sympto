@@ -10,7 +10,7 @@ import {
 import Loading from "../components/Loading";
 
 const Profile = () => {
-  const [isEdit, setIsEdit] = useState(false);
+  const [isEdit, setIsEdit] = useState(null);
   const [profileData, setProfileData] = useState({
     age: "",
     blood_group: "",
@@ -42,8 +42,10 @@ const Profile = () => {
   }, [user]);
 
   useEffect(() => {
-    if (isError) {
-      toast.error(message);
+    if (isEdit !== null) {
+      if (isError) {
+        toast.error(message);
+      }
     }
 
     dispatch(reset());
@@ -84,9 +86,6 @@ const Profile = () => {
     }
   };
 
-  if (isLoading) {
-    return <Loading />;
-  }
   return (
     <div>
       {isLoading && <Loading />}

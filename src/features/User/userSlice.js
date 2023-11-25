@@ -3,7 +3,7 @@ import userService from "./userService";
 // const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
-  user: {},
+  user: null,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -60,11 +60,35 @@ export const getUserProfile = createAsyncThunk(
   },
 );
 
+// edit user profile
+export const editUserProfile = createAsyncThunk(
+  "user/get",
+  async (user, thunkAPI) => {
+    const token = thunkAPI.getState().auth.userAuth.tokens.access;
+
+    try {
+      return await userService.editUserProfile(user, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      console.log(message);
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  },
+);
+
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     reset: (state) => {
+      state.user = null;
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = false;
