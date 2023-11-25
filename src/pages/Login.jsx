@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Logo from "../components/Logo";
 import { login, reset } from "../features/Auth/authSlice";
+import Loading from "../components/Loading";
 
 const Login = () => {
   const [formInput, setFormInput] = useState({
@@ -50,7 +51,7 @@ const Login = () => {
   };
 
   if (isLoading) {
-    return <div>loading...</div>;
+    return <Loading />;
   }
 
   return (
