@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { FaPlus, FaSignOutAlt, FaTimes, FaUserCircle } from "react-icons/fa";
 import { logout, reset } from "../features/Auth/authSlice";
+import { reset as userReset } from "../features/User/userSlice";
 import Logo from "./Logo";
 import MobileNav from "./MobileNav";
 import UserIcon from "./UserIcon";
@@ -19,7 +20,8 @@ const Header = () => {
     close();
     dispatch(logout());
     dispatch(reset());
-    navigate('/')
+    dispatch(userReset());
+    navigate("/");
   };
   const close = () => {
     setIsMobileMenu(false);

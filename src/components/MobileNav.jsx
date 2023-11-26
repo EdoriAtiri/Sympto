@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/Auth/authSlice";
+import { reset as userReset } from "../features/User/userSlice";
 
 const MobileNav = ({ close }) => {
   const { userAuth } = useSelector((state) => state.auth);
@@ -12,6 +13,7 @@ const MobileNav = ({ close }) => {
     close();
     dispatch(logout());
     dispatch(reset());
+    dispatch(userReset());
     navigate("/");
   };
 

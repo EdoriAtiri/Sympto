@@ -6,7 +6,6 @@ import {
   createProfile,
   editUserProfile,
   getUserProfile,
-  reset,
 } from "../features/User/userSlice";
 import Loading from "../components/Loading";
 import { FaEdit } from "react-icons/fa";
@@ -52,7 +51,6 @@ const Profile = () => {
       setIsProfileLoaded(true);
     }
 
-    dispatch(reset());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError, message, isSuccess, user]);
 

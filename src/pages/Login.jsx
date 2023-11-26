@@ -22,7 +22,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isError) {
-      toast.error(message);
+      toast.error("An error occured, check your credentials and try again");
     }
 
     // Redirect when logged in
