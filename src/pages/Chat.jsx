@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ChatMessages from "../components/ChatMessages";
 import { FaArrowRight } from "react-icons/fa";
 import Header from "../components/Header";
@@ -8,6 +8,7 @@ import Header from "../components/Header";
 const Chat = () => {
   const [input, setInput] = useState("");
   const chatBoxRef = useRef(null);
+  const { message } = useSelector((state) => state.user);
 
   const [chatLog, setChatLog] = useState([
     {
@@ -39,6 +40,14 @@ const Chat = () => {
         "lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita ratione iure delectus tempora porro officiis culpa quo dolorum ducimu dolorum consequuntur dolorem optio, vitae sunt?",
     },
   ]);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (message) {
+      navigate("/profile");
+    }
+  }, [message, navigate]);
 
   const scrollToBottom = () => {
     if (chatBoxRef.current) {

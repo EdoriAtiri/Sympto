@@ -6,29 +6,54 @@ import Loading from "./Loading";
 
 const GetStarted = () => {
   const [wait, setWait] = useState(true);
-  const { user, isLoading } = useSelector((state) => state.user);
+  const { user, isLoading, message } = useSelector((state) => state.user);
   const { userAuth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(getUserProfile(userAuth.user));
-  }, [dispatch, userAuth.user]);
+  const profileOrChat = () => {
+    return new Promise((resolve) => {
+      dispatch(getUserProfile(userAuth.user));
+      resolve(user);
+    });
+  };
 
   useEffect(() => {
-    if (!isLoading) {
-      setWait(false);
-    }
-    if (!wait) {
-      if (user) {
-        navigate("/chat");
-      } else {
-        navigate("/profile");
-      }
-    }
-  }, [isLoading, navigate, user, wait]);
+    profileOrChat()
+      .then((user) => {
+        if (user) {
+          setWait(false);
+          navigate("/chat");
+        }
+        if (message) {
+          setWait(false);
+          navigate("/profile");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching user profile:", error);
+        // Handle error if needed
+      });
+  }, [dispatch, userAuth.user, message, isLoading]);
 
-  return <div>{isLoading && <Loading />}</div>;
+  // useEffect(() => {
+  //   if (!wait) {
+  //     if (user) {
+  //       navigate("/chat");
+  //     } else {
+  //       navigate("/profile");
+  //     }
+  //   }
+  // }, [navigate, user, wait]);
+
+  if (isLoading || wait) {
+    return (
+      <div>
+        {" "}
+        <Loading />
+      </div>
+    );
+  }
 };
 
 export default GetStarted;
