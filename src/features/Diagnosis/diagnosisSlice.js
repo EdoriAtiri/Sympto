@@ -33,7 +33,7 @@ export const startDiagnosis = createAsyncThunk(
 );
 
 export const diagnosisSlice = createSlice({
-  name: "user",
+  name: "diagnosis",
   initialState,
   reducers: {
     reset: (state) => {
