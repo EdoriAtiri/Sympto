@@ -145,7 +145,9 @@ const Profile = () => {
               </div>
 
               <div>
-                <label className="font-medium">Height</label>
+                <label className="font-medium">
+                  Height <span className="font-bold">{`(metres)`}</span>
+                </label>
                 <input
                   onChange={onChange}
                   type="text"
@@ -159,7 +161,9 @@ const Profile = () => {
               </div>
 
               <div>
-                <label className="font-medium">Weight</label>
+                <label className="font-medium">
+                  Weight <span className="font-bold">{`(Kg)`}</span>
+                </label>
                 <input
                   onChange={onChange}
                   type="text"
