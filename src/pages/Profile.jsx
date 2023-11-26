@@ -51,9 +51,9 @@ const Profile = () => {
       setIsProfileLoaded(true);
     }
 
-    if (!isEdit) {
-      toast.info("Please complete your profile registration to use AskDoc");
-    }
+    // if (!isEdit) {
+    //   toast.info("Please complete your profile registration to use AskDoc");
+    // }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError, isEdit, message, isSuccess, user]);

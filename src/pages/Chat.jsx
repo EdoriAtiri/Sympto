@@ -5,11 +5,11 @@ import ChatMessages from "../components/ChatMessages";
 import { FaArrowRight } from "react-icons/fa";
 import Header from "../components/Header";
 import Loading from "../components/Loading";
-import { startDiagnosis } from "../features/Diagnosis/diagnosisSlice";
+import { startDiagnosis, reset } from "../features/Diagnosis/diagnosisSlice";
 
 const Chat = () => {
   const [beginDiagnosis, setBeginDiagnosis] = useState(true);
-  const [input, setInput] = useState("");
+  // const [input, setInput] = useState("");
   const chatBoxRef = useRef(null);
   const { message, user } = useSelector((state) => state.user);
   const { diagnosis, isSuccess, isLoading } = useSelector(
@@ -25,8 +25,8 @@ const Chat = () => {
   const [chatLog, setChatLog] = useState([]);
 
   const [formInput, setFormInput] = useState({
-    problem: "headaches",
-    symptoms: "nausea vomiting",
+    problem: "",
+    symptoms: "",
   });
 
   const { problem, symptoms } = formInput;
@@ -53,14 +53,14 @@ const Chat = () => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let newChatLog = [...chatLog, { role: "user", message: `${input}` }];
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   let newChatLog = [...chatLog, { role: "user", message: `${input}` }];
 
-    setInput("");
+  //   setInput("");
 
-    setChatLog(newChatLog);
-  };
+  //   setChatLog(newChatLog);
+  // };
 
   useEffect(() => {
     setTimeout(() => {
@@ -93,6 +93,12 @@ const Chat = () => {
   if (isLoading) {
     return <Loading />;
   }
+
+  const newSymptom = () => {
+    dispatch(reset());
+    setFormInput("");
+    setBeginDiagnosis(true);
+  };
 
   return (
     <div className="relative min-h-screen w-full bg-sky-200">
@@ -162,7 +168,7 @@ const Chat = () => {
         </div>
 
         {/* input */}
-        <form
+        {/* <form
           onSubmit={handleSubmit}
           className="flex h-16 w-full rounded-b-lg bg-white px-4 py-4 text-lg font-bold shadow-xl shadow-sky-400 sm:h-20"
         >
@@ -179,7 +185,17 @@ const Chat = () => {
               <FaArrowRight className="text-gray-800 sm:hidden" />
             </button>
           </div>
-        </form>
+        </form> */}
+
+        <div className="grid h-14 w-full place-items-center bg-white ">
+          <button
+            onClick={newSymptom}
+            className=" h-10 w-fit place-items-end rounded-lg px-2  text-white shadow-sky-200 drop-shadow-2xl transition-shadow active:shadow-none sm:bg-sky-500 sm:shadow-inner md:w-24"
+          >
+            <span className="hidden sm:block">New Diagnosis</span>
+            <FaArrowRight className="text-gray-800 sm:hidden" />
+          </button>
+        </div>
       </div>
     </div>
   );
