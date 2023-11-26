@@ -192,7 +192,7 @@ const Chat = () => {
             onClick={newSymptom}
             className=" h-10 w-fit place-items-end rounded-lg px-2  text-white shadow-sky-200 drop-shadow-2xl transition-shadow active:shadow-none sm:bg-sky-500 sm:shadow-inner md:w-24"
           >
-            <span className="hidden sm:block">New Diagnosis</span>
+            <span className="hidden sm:block">New</span>
             <FaArrowRight className="text-gray-800 sm:hidden" />
           </button>
         </div>
