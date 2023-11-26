@@ -53,7 +53,12 @@ export const diagnosisSlice = createSlice({
       .addCase(startDiagnosis.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.diagnosis = action.payload;
+        const user = `${action.payload.problem}. ${action.payload.problem}. ${action.payload.medical_history}`;
+        const data = {
+          user: user,
+          askDoc: action.payload.response,
+        };
+        state.diagnosis = [...action.payload, data];
       })
       .addCase(startDiagnosis.rejected, (state, action) => {
         state.isLoading = false;
