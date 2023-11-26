@@ -3,7 +3,8 @@ const API_URL = import.meta.env.VITE_BASEURL;
 
 // Signup user
 const register = async (data) => {
-  const response = await axios.post(API_URL + "register_user/", data);
+  console.log(data);
+  const response = await axios.post(`${API_URL}register_user/`, data);
 
   console.log(response);
 
@@ -24,7 +25,10 @@ const login = async (data) => {
 };
 
 // Logout user
-const logout = () => localStorage.removeItem("user");
+const logout = () => {
+  localStorage.removeItem("user");
+  localStorage.removeItem("userData");
+};
 // const logout = async (user) => {
 //   const response = await axios.post(API_URL + "authenticate/user/logout", data);
 

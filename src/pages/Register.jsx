@@ -81,12 +81,9 @@ const Register = () => {
         gender,
         username,
         phone_number,
-        lat,
-        lon,
       };
 
       dispatch(register(data));
-      console.log(formInput);
     }
   };
 
