@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import diagnosisService from "./diagnosisService";
-// const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
   conversation: [],
@@ -14,7 +13,9 @@ const initialState = {
 export const startDiagnosis = createAsyncThunk(
   "diagnosis/start",
   async (userData, thunkAPI) => {
+    console.log(userData);
     const token = thunkAPI.getState().auth.userAuth.tokens.access;
+
     try {
       return await diagnosisService.startDiagnosis(userData, token);
     } catch (error) {
@@ -37,7 +38,7 @@ export const diagnosisSlice = createSlice({
   initialState,
   reducers: {
     reset: (state) => {
-      //   state.diagnosis = null;
+      state.diagnosis = null;
       state.isLoading = false;
       state.isError = false;
       state.isSuccess = false;
@@ -53,12 +54,16 @@ export const diagnosisSlice = createSlice({
       .addCase(startDiagnosis.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        const user = `${action.payload.problem}. ${action.payload.problem}. ${action.payload.medical_history}`;
-        const data = {
-          user: user,
-          askDoc: action.payload.response,
+        const userData = {
+          role: "user",
+          message: `Your health problem is ${action.payload.problem}. Your symptoms include: ${action.payload.symptoms}`,
         };
-        state.diagnosis = [...action.payload, data];
+        const aiData = {
+          role: "gpt",
+          message: action.payload.response,
+        };
+        state.diagnosis = [...state.conversation, userData, aiData];
+        console.log(userData, aiData);
       })
       .addCase(startDiagnosis.rejected, (state, action) => {
         state.isLoading = false;

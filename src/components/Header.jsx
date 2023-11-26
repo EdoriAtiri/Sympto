@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { FaPlus, FaSignOutAlt, FaTimes, FaUserCircle } from "react-icons/fa";
 import { logout, reset } from "../features/Auth/authSlice";
 import { reset as userReset } from "../features/User/userSlice";
+import { reset as resetDiagnosis } from "../features/Diagnosis/diagnosisSlice";
 import Logo from "./Logo";
 import MobileNav from "./MobileNav";
 import UserIcon from "./UserIcon";
@@ -21,6 +22,7 @@ const Header = () => {
     dispatch(logout());
     dispatch(reset());
     dispatch(userReset());
+    dispatch(resetDiagnosis());
     navigate("/");
   };
   const close = () => {

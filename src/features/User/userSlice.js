@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import userService from "./userService";
-// const user = JSON.parse(localStorage.getItem("user"));
+const userData = JSON.parse(localStorage.getItem("userData"));
 
 const initialState = {
-  user: null,
+  user: userData || null,
   isError: false,
   isSuccess: false,
   isLoading: false,

@@ -16,8 +16,6 @@ const createProfile = async (userData, token) => {
     config,
   );
 
-  console.log(response);
-
   return response.data;
 };
 
@@ -29,6 +27,10 @@ const getUserProfile = async (user, token) => {
   };
 
   const response = await axios.get(`${API_URL}profile/get/${user}`, config);
+
+  if (response.data) {
+    localStorage.setItem("userData", JSON.stringify(response.data));
+  }
 
   console.log(response);
 

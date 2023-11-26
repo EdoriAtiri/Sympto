@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/Auth/authSlice";
 import { reset as userReset } from "../features/User/userSlice";
+import { reset as resetDiagnosis } from "../features/Diagnosis/diagnosisSlice";
 
 const MobileNav = ({ close }) => {
   const { userAuth } = useSelector((state) => state.auth);
@@ -14,6 +15,7 @@ const MobileNav = ({ close }) => {
     dispatch(logout());
     dispatch(reset());
     dispatch(userReset());
+    dispatch(resetDiagnosis());
     navigate("/");
   };
 

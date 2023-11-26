@@ -1,47 +1,45 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import ChatMessages from "../components/ChatMessages";
 import { FaArrowRight } from "react-icons/fa";
 import Header from "../components/Header";
+import Loading from "../components/Loading";
+import { startDiagnosis } from "../features/Diagnosis/diagnosisSlice";
 
 const Chat = () => {
+  const [beginDiagnosis, setBeginDiagnosis] = useState(true);
   const [input, setInput] = useState("");
   const chatBoxRef = useRef(null);
-  const { message } = useSelector((state) => state.user);
+  const { message, user } = useSelector((state) => state.user);
+  const { diagnosis, isSuccess, isLoading } = useSelector(
+    (state) => state.diagnosis,
+  );
+  const currentUser = { ...user };
+  delete currentUser["id"];
+  delete currentUser["user"];
+  delete currentUser["date_created"];
+  delete currentUser["date_updated"];
+  const medical_history = JSON.stringify(currentUser);
 
-  const [chatLog, setChatLog] = useState([
-    {
-      role: "gpt",
-      message: "how can i help you?",
-    },
-    {
-      role: "user",
-      message: "i want to use sympto sage today",
-    },
-    {
-      role: "gpt",
-      message:
-        "lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita ratione iure delectus tempora porro officiis culpa quo dolorum ducimus, mollitia magnam in eligendi quasi accusantium vero molestias veritatis et nobis ullam omnis eveniet aliquam, cumque deserunt? Dolores dolorum consequuntur dolorem optio, vitae sunt?",
-    },
-    {
-      role: "user",
-      message:
-        "lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita ratione iure delectus tempora porro officiis culpa quo dolorum ducimu dolorum consequuntur dolorem optio, vitae sunt?",
-    },
-    {
-      role: "gpt",
-      message:
-        "lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita ratione iure delectus tempora porro officiis culpa quo dolorum ducimus, mollitia magnam in eligendi quasi accusantium vero molestias veritatis et nobis ullam omnis eveniet aliquam, cumque deserunt? Dolores dolorum consequuntur dolorem optio, vitae sunt?",
-    },
-    {
-      role: "user",
-      message:
-        "lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita ratione iure delectus tempora porro officiis culpa quo dolorum ducimu dolorum consequuntur dolorem optio, vitae sunt?",
-    },
-  ]);
+  const [chatLog, setChatLog] = useState([]);
+
+  const [formInput, setFormInput] = useState({
+    problem: "headaches",
+    symptoms: "nausea vomiting",
+  });
+
+  const { problem, symptoms } = formInput;
+
+  const onChange = (e) => {
+    setFormInput((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (message) {
@@ -65,24 +63,102 @@ const Chat = () => {
   };
 
   useEffect(() => {
-    console.log(chatLog);
     setTimeout(() => {
       scrollToBottom();
     }, 0);
   }, [chatLog]);
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const diagnosisInput = formInput;
+    formInput.medical_history = medical_history;
+
+    dispatch(startDiagnosis(diagnosisInput));
+    let newChatLog = [
+      ...chatLog,
+      {
+        role: "user",
+        message: `${formInput.problem}. ${formInput.symptoms}`,
+      },
+    ];
+    setChatLog(newChatLog);
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      setBeginDiagnosis(false);
+    }
+  }, [isSuccess]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div className="relative min-h-screen w-full bg-sky-200">
       <Header />
+      {beginDiagnosis && (
+        <div className="absolute inset-0 z-10 h-full w-full bg-sky-800"></div>
+      )}
+      {beginDiagnosis && (
+        <div className="absolute left-1/2 top-1/2 z-20 flex -translate-x-1/2 -translate-y-1/2 flex-col gap-5  rounded-xl bg-white px-5 py-7">
+          <Link to="/" className="absolute left-1 top-1 text-blue-400">
+            Go Home
+          </Link>
+          <h4 className="text-center font-bold">Start Diagnosis</h4>
+          <span className="text-center text-sm">
+            Provide responses to begin diagnosing your symptoms.
+          </span>
+          <form onSubmit={onSubmit} className="flex flex-col gap-5 rounded-xl ">
+            <div>
+              <label className="font-medium">Problem</label>
+              <textarea
+                onChange={onChange}
+                type="text"
+                id="problem"
+                name="problem"
+                value={problem}
+                required
+                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+              ></textarea>
+            </div>
+            <div>
+              <label className="font-medium">Symptoms</label>
+              <textarea
+                onChange={onChange}
+                type="text"
+                id="symptoms"
+                name="symptoms"
+                value={symptoms}
+                required
+                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+              ></textarea>
+            </div>
+
+            <button className="w-full rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white duration-150 hover:bg-indigo-500 active:bg-indigo-600">
+              Start Diagnosis
+            </button>
+          </form>
+        </div>
+      )}
+
       <div className="tranform absolute bottom-7 left-1/2 w-3/4 -translate-x-1/2  [&>*]:border-b [&>*]:border-sky-500">
         {/* Chat box */}
         <div
           ref={chatBoxRef}
-          className="h-[500px] overflow-auto rounded-t-lg bg-sky-100"
+          className="h-[500px] overflow-x-hidden overflow-y-scroll rounded-t-lg bg-sky-100"
         >
-          {chatLog.map((chat, index) => (
-            <ChatMessages key={index} message={chat.message} role={chat.role} />
-          ))}
+          {Array.isArray(diagnosis) ? (
+            diagnosis.map((chat, index) => (
+              <ChatMessages
+                key={index}
+                message={chat.message}
+                role={chat.role}
+              />
+            ))
+          ) : (
+            <ChatMessages role="gpt" message={"No messages yet"} />
+          )}
         </div>
 
         {/* input */}
