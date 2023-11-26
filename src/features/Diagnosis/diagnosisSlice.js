@@ -9,3 +9,25 @@ const initialState = {
   isLoading: false,
   message: null,
 };
+
+// Start Diagnosis
+export const startDiagnosis = createAsyncThunk(
+  "diagnosis/start",
+  async (userData, thunkAPI) => {
+    const token = thunkAPI.getState().auth.userAuth.tokens.access;
+    try {
+      return await diagnosisService.startDiagnosis(userData, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      console.log(message);
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  },
+);
