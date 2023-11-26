@@ -31,3 +31,37 @@ export const startDiagnosis = createAsyncThunk(
     }
   },
 );
+
+export const diagnosisSlice = createSlice({
+  name: "user",
+  initialState,
+  reducers: {
+    reset: (state) => {
+      //   state.diagnosis = null;
+      state.isLoading = false;
+      state.isError = false;
+      state.isSuccess = false;
+      state.message = "";
+    },
+  },
+
+  extraReducers: (builder) => {
+    builder
+      .addCase(startDiagnosis.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(startDiagnosis.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.diagnosis = action.payload;
+      })
+      .addCase(startDiagnosis.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      });
+  },
+});
+
+export const { reset } = diagnosisSlice.actions;
+export default diagnosisSlice.reducer;
