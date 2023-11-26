@@ -114,7 +114,10 @@ const Header = () => {
 
           {/* Mobile Hamburger */}
           {
-            <button onClick={() => setIsMobileMenu(true)} className="md:hidden">
+            <button
+              onClick={() => setIsMobileMenu(true)}
+              className="z-20 md:hidden"
+            >
               {isMobileMenu ? (
                 <FaTimes size="2.5em" />
               ) : (

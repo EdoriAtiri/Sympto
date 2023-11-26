@@ -107,7 +107,7 @@ const Chat = () => {
         <div className="absolute inset-0 z-10 h-full w-full bg-sky-800"></div>
       )}
       {beginDiagnosis && (
-        <div className="absolute left-1/2 top-1/2 z-20 flex -translate-x-1/2 -translate-y-1/2 flex-col gap-5  rounded-xl bg-white px-5 py-7">
+        <div className="absolute left-1/2 top-1/2 z-20 flex w-3/4 -translate-x-1/2 -translate-y-1/2 flex-col gap-5 rounded-xl  bg-white px-5 py-7 lg:w-2/4">
           <Link to="/" className="absolute left-1 top-1 text-blue-400">
             Go Home
           </Link>
