@@ -274,7 +274,12 @@ const Profile = () => {
           </div> */}
 
           <div className="w-full lg:mt-4 lg:flex lg:justify-center">
-            <button className="w-full rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white duration-150 hover:bg-indigo-500 active:bg-indigo-600 lg:w-96">
+            <button
+              disabled={isDisabled}
+              className={`w-full rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white duration-150 hover:bg-indigo-500  lg:w-96 ${
+                isDisabled ? "opacity-70" : "opacity-100 active:bg-indigo-600"
+              }`}
+            >
               {isEdit ? "Update Profile" : "Save Profile"}
             </button>
           </div>
