@@ -155,7 +155,8 @@ const Home = () => {
           <div className="mt-10 md:w-1/2">
             <div className="relative z-20 flex h-full flex-col justify-center pt-4 md:pr-8 md:pt-0">
               <h2 className="text-3xl text-gray-800">
-                Lorem ipsum dolor, sit amet consectetur adipisicing.{" "}
+                Effortless Health Management: Simplifying Symptom Tracking and
+                Beyond
               </h2>
               <p className="mt-6 text-lg text-gray-600">
                 Gathering and analyzing your symptoms is a key part of personal
@@ -201,7 +202,7 @@ const Home = () => {
         <div className="mx-auto flex max-w-5xl flex-col items-center justify-center gap-4 px-4 text-center sm:flex-row sm:justify-between sm:gap-0 sm:px-6 sm:text-left lg:px-8">
           <div>
             <h2 className="text-xl text-gray-200">
-              Register today. Get started tomorrow.
+              Register today. Get started now.
             </h2>
             <p className="mt-1 text-lg text-gray-400">
               No more headaches. We simplify symptom identification
