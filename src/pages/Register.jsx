@@ -146,7 +146,7 @@ const Register = () => {
                 name="first_name"
                 value={first_name}
                 required
-                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+                className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
             </div>
 
@@ -159,7 +159,7 @@ const Register = () => {
                 name="last_name"
                 value={last_name}
                 required
-                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+                className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
             </div>
 
@@ -172,7 +172,7 @@ const Register = () => {
                 name="username"
                 value={username}
                 required
-                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+                className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
             </div>
 
@@ -185,14 +185,14 @@ const Register = () => {
                 name="email"
                 value={email}
                 required
-                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+                className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
             </div>
 
             <div>
               <label className="font-medium">Gender</label>
               <select
-                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+                className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
                 name="gender"
                 id="gender"
                 value={gender}
@@ -215,7 +215,7 @@ const Register = () => {
                 name="phone_number"
                 value={phone_number}
                 required
-                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+                className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
             </div>
 
@@ -229,7 +229,7 @@ const Register = () => {
                 value={password}
                 min="6"
                 required
-                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+                className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
             </div>
             <div>
@@ -241,7 +241,7 @@ const Register = () => {
                 name="password2"
                 value={password2}
                 required
-                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+                className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
             </div>
 

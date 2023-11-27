@@ -120,7 +120,7 @@ const Profile = () => {
           {isEdit && (
             <button
               onClick={() => setIsDisabled(false)}
-              className="text-gray-800 active:scale-95"
+              className="text-sky-500 active:scale-95"
             >
               <FaEdit size="1.3em" />
             </button>
@@ -140,7 +140,11 @@ const Profile = () => {
                   value={age}
                   required
                   disabled={isDisabled}
-                  className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+                  className={`mt-2 w-full rounded-lg border bg-transparent px-3 py-2  shadow-sm outline-none focus:border-indigo-600 ${
+                    isDisabled
+                      ? "text-gray-500"
+                      : "border-gray-900 text-gray-800 "
+                  }`}
                 />
               </div>
 
@@ -156,7 +160,11 @@ const Profile = () => {
                   value={height}
                   required
                   disabled={isDisabled}
-                  className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+                  className={`mt-2 w-full rounded-lg border bg-transparent px-3 py-2  shadow-sm outline-none focus:border-indigo-600 ${
+                    isDisabled
+                      ? "text-gray-500"
+                      : "border-gray-900 text-gray-800 "
+                  }`}
                 />
               </div>
 
@@ -172,7 +180,11 @@ const Profile = () => {
                   value={weight}
                   required
                   disabled={isDisabled}
-                  className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+                  className={`mt-2 w-full rounded-lg border bg-transparent px-3 py-2 shadow-sm outline-none focus:border-indigo-600 ${
+                    isDisabled
+                      ? "text-gray-500"
+                      : "border-gray-900 text-gray-800 "
+                  }`}
                 />
               </div>
             </div>
@@ -181,7 +193,11 @@ const Profile = () => {
               <div>
                 <label className="font-medium">Blood Group</label>
                 <select
-                  className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+                  className={`mt-2 w-full rounded-lg border bg-transparent px-3 py-2  shadow-sm outline-none focus:border-indigo-600 ${
+                    isDisabled
+                      ? "text-gray-500"
+                      : "border-gray-900 text-gray-800 "
+                  }`}
                   name="blood_group"
                   id="blood_group"
                   value={blood_group}
@@ -202,7 +218,11 @@ const Profile = () => {
               <div className="">
                 <label className="font-medium">Genotype</label>
                 <select
-                  className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+                  className={`mt-2 w-full rounded-lg border bg-transparent px-3 py-2  shadow-sm outline-none focus:border-indigo-600 ${
+                    isDisabled
+                      ? "text-gray-500"
+                      : "border-gray-900 text-gray-800 "
+                  }`}
                   name="genotype"
                   id="genotype"
                   value={genotype}
@@ -233,7 +253,9 @@ const Profile = () => {
               id="Medical_records"
               value={Medical_records}
               disabled={isDisabled}
-              className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+              className={`mt-2 w-full rounded-lg border bg-transparent px-3 py-2  shadow-sm outline-none focus:border-indigo-600 ${
+                isDisabled ? "text-gray-500" : "border-gray-900 text-gray-800 "
+              }`}
               rows="4"
             ></textarea>
             <input />
@@ -253,7 +275,7 @@ const Profile = () => {
 
           <div className="w-full lg:mt-4 lg:flex lg:justify-center">
             <button className="w-full rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white duration-150 hover:bg-indigo-500 active:bg-indigo-600 lg:w-96">
-              {isEdit ? "Edit Profile" : "Save Profile"}
+              {isEdit ? "Update Profile" : "Save Profile"}
             </button>
           </div>
         </form>

@@ -5,12 +5,14 @@ import { toast } from "react-toastify";
 import Logo from "../components/Logo";
 import { login, reset } from "../features/Auth/authSlice";
 import Loading from "../components/Loading";
+import { FaEye } from "react-icons/fa";
 
 const Login = () => {
   const [formInput, setFormInput] = useState({
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
   const { userAuth, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth,
   );
@@ -73,20 +75,28 @@ const Login = () => {
                 name="email"
                 value={email}
                 required
-                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+                className="mt-2 w-full rounded-lg border border-gray-800 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
             </div>
-            <div>
+            <div className="relative">
               <label className="font-medium">Password</label>
               <input
                 onChange={onChange}
-                type="password"
+                type={`${showPassword ? "text" : "password"}`}
                 id="password"
                 name="password"
                 value={password}
                 required
-                className="mt-2 w-full rounded-lg border bg-transparent px-3 py-2 text-gray-500 shadow-sm outline-none focus:border-indigo-600"
+                className="mt-2 w-full rounded-lg border border-gray-800 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
+              <button
+                onClick={() => setShowPassword(!showPassword)}
+                className={`${
+                  showPassword ? "text-gray-800" : "text-gray-400"
+                } absolute right-0.5 top-[2.3rem] p-2`}
+              >
+                <FaEye />
+              </button>
             </div>
 
             <div className="flex items-center justify-between text-sm">
