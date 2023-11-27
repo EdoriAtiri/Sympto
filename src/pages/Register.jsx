@@ -5,8 +5,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { register, reset } from "../features/Auth/authSlice";
 import Loading from "../components/Loading";
+import { FaEye } from "react-icons/fa";
 
 const Register = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
+
   const [formInput, setFormInput] = useState({
     first_name: "",
     last_name: "",
@@ -29,8 +33,8 @@ const Register = () => {
     email,
     password,
     password2,
-    lat,
-    lon,
+    // lat,
+    // lon,
   } = formInput;
 
   const navigate = useNavigate();
@@ -81,6 +85,8 @@ const Register = () => {
         gender,
         username,
         phone_number,
+        // lat,
+        // lon
       };
 
       dispatch(register(data));
@@ -219,11 +225,11 @@ const Register = () => {
               />
             </div>
 
-            <div>
+            <div className="relative">
               <label className="font-medium">Password</label>
               <input
                 onChange={onChange}
-                type="password"
+                type={`${showPassword ? "text" : "password"}`}
                 id="password"
                 name="password"
                 value={password}
@@ -231,18 +237,34 @@ const Register = () => {
                 required
                 className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
+              <button
+                onClick={() => setShowPassword(!showPassword)}
+                className={`${
+                  showPassword ? "text-gray-800" : "text-gray-400"
+                } absolute right-0.5 top-[2.3rem] p-2`}
+              >
+                <FaEye />
+              </button>
             </div>
-            <div>
+            <div className="relative">
               <label className="font-medium">Confirm Password</label>
               <input
                 onChange={onChange}
-                type="password"
+                type={`${showPassword2 ? "text" : "password"}`}
                 id="password2"
                 name="password2"
                 value={password2}
                 required
                 className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
+              <button
+                onClick={() => setShowPassword2(!showPassword2)}
+                className={`${
+                  showPassword ? "text-gray-800" : "text-gray-400"
+                } absolute right-0.5 top-[2.3rem] p-2`}
+              >
+                <FaEye />
+              </button>
             </div>
 
             <button className="w-full rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white duration-150 hover:bg-indigo-500 active:bg-indigo-600">
