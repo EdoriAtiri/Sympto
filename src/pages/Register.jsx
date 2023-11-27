@@ -163,6 +163,7 @@ const Register = () => {
                 name="first_name"
                 value={first_name}
                 required
+                autoComplete="off"
                 className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
             </div>
@@ -176,6 +177,7 @@ const Register = () => {
                 name="last_name"
                 value={last_name}
                 required
+                autoComplete="off"
                 className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
             </div>
@@ -189,6 +191,7 @@ const Register = () => {
                 name="username"
                 value={username}
                 required
+                autoComplete="off"
                 className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
             </div>
@@ -201,6 +204,7 @@ const Register = () => {
                 id="email"
                 name="email"
                 value={email}
+                autoComplete="off"
                 required
                 className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
@@ -232,6 +236,7 @@ const Register = () => {
                 name="phone_number"
                 value={phone_number}
                 required
+                autoComplete="off"
                 className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
             </div>
@@ -243,6 +248,7 @@ const Register = () => {
                 type={`${showPassword ? "text" : "password"}`}
                 id="password"
                 name="password"
+                autoComplete="off"
                 value={password}
                 min="6"
                 required
@@ -264,6 +270,7 @@ const Register = () => {
                 type={`${showPassword2 ? "text" : "password"}`}
                 id="password2"
                 name="password2"
+                autoComplete="off"
                 value={password2}
                 required
                 className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"

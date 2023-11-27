@@ -72,6 +72,7 @@ const Login = () => {
                 type="email"
                 id="email"
                 name="email"
+                autoComplete="off"
                 value={email}
                 required
                 className="mt-2 w-full rounded-lg border border-gray-800 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
@@ -84,6 +85,7 @@ const Login = () => {
                 type={`${showPassword ? "text" : "password"}`}
                 id="password"
                 name="password"
+                autoComplete="off"
                 value={password}
                 required
                 className="mt-2 w-full rounded-lg border border-gray-800 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
