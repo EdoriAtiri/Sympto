@@ -260,7 +260,7 @@ const Register = () => {
               <button
                 onClick={() => setShowPassword2(!showPassword2)}
                 className={`${
-                  showPassword ? "text-gray-800" : "text-gray-400"
+                  showPassword2 ? "text-gray-800" : "text-gray-400"
                 } absolute right-0.5 top-[2.3rem] p-2`}
               >
                 <FaEye />

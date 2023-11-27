@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 import Header from "../components/Header";
 import onlineTest from "../assets/online_test.svg";
-import person from "../assets/person-using-pc-.jpg";
+import person from "../assets/person-using-pc-.webp";
 import metrics1 from "../assets/metrics-img-1.png";
 
 const Home = () => {
