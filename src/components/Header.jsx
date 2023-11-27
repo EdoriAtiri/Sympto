@@ -57,7 +57,10 @@ const Header = () => {
                 </Link>
               </li>
               <li className="group relative">
-                <Link className="rounded-md px-2 py-1 focus:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2">
+                <Link
+                  to="/about"
+                  className="rounded-md px-2 py-1 focus:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2"
+                >
                   About
                 </Link>
               </li>

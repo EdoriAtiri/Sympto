@@ -40,7 +40,7 @@ const MobileNav = ({ close }) => {
             </Link>
           </li>
           <li className="border-b  text-xl font-bold hover:border-sky-500 focus:border-sky-500">
-            <Link onClick={close} className="block w-full p-2" to="">
+            <Link to="/about" onClick={close} className="block w-full p-2">
               About
             </Link>
           </li>
