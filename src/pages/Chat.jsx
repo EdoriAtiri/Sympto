@@ -6,6 +6,7 @@ import ChatMessages from "../components/ChatMessages";
 import Header from "../components/Header";
 import Loading from "../components/Loading";
 import { startDiagnosis, reset } from "../features/Diagnosis/diagnosisSlice";
+import { FaArrowLeft } from "react-icons/fa";
 
 const Chat = () => {
   const [beginDiagnosis, setBeginDiagnosis] = useState(true);
@@ -109,8 +110,11 @@ const Chat = () => {
       )}
       {beginDiagnosis && (
         <div className="absolute left-1/2 top-1/2 z-20 flex w-3/4 -translate-x-1/2 -translate-y-1/2 flex-col gap-5 rounded-xl  bg-white px-5 py-7 lg:w-2/4">
-          <Link to="/" className="absolute left-1 top-1 text-blue-400">
-            Go Home
+          <Link
+            to="/"
+            className="absolute left-1.5 top-1 flex items-center gap-2 font-bold text-blue-500"
+          >
+            <FaArrowLeft /> Go Home
           </Link>
           <h4 className="text-center font-bold">Start Diagnosis</h4>
           <span className="text-center text-sm">
