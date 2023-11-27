@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserProfile } from "../features/User/userSlice";
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
+import { toast } from "react-toastify";
 
 const GetStarted = () => {
   const [wait, setWait] = useState(true);
@@ -28,13 +29,14 @@ const GetStarted = () => {
         if (message) {
           setWait(false);
           navigate("/profile");
+          toast.info("Please complete your registration to proceed");
         }
       })
       .catch((error) => {
         console.error("Error fetching user profile:", error);
         // Handle error if needed
       });
-  }, [dispatch, userAuth.user, message, isLoading]);
+  }, [dispatch, message, navigate]);
 
   // useEffect(() => {
   //   if (!wait) {

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   FaArrowRight,
   FaAt,
@@ -13,6 +14,8 @@ import person from "../assets/person-using-pc-.webp";
 import metrics1 from "../assets/metrics-img-1.png";
 
 const Home = () => {
+  const { userAuth } = useSelector((state) => state.auth);
+
   return (
     <div>
       {/* Header/Nav*/}
@@ -34,12 +37,21 @@ const Home = () => {
           </p>
         </div>
 
-        <Link
-          to="/login"
-          className="mx-auto mt-8 flex items-center gap-4 rounded-md bg-sky-500 px-6 py-3 text-lg font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400  focus:ring-offset-2"
-        >
-          <span>Get Started</span> <FaArrowRight />
-        </Link>
+        {userAuth ? (
+          <Link
+            to="/getstarted"
+            className="mx-auto mt-8 flex items-center gap-4 rounded-md bg-sky-500 px-6 py-3 text-lg font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400  focus:ring-offset-2"
+          >
+            <span>Get Started</span> <FaArrowRight />
+          </Link>
+        ) : (
+          <Link
+            to="/login"
+            className="mx-auto mt-8 flex items-center gap-4 rounded-md bg-sky-500 px-6 py-3 text-lg font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400  focus:ring-offset-2"
+          >
+            <span>Get Started</span> <FaArrowRight />
+          </Link>
+        )}
       </section>
 
       {/* <!-- Image section --> */}
