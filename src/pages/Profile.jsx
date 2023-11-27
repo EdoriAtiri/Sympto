@@ -98,10 +98,10 @@ const Profile = () => {
     if (isSuccess) {
       toast.success("success");
     }
-    if (isError) {
-      toast.error(message);
-      setIsProfileLoaded(true);
-    }
+    // if (isError) {
+    //   toast.error(message);
+    //   setIsProfileLoaded(true);
+    // }
   };
 
   return (
