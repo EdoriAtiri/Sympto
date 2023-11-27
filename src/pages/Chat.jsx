@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ChatMessages from "../components/ChatMessages";
-import { FaArrowRight } from "react-icons/fa";
+// import { FaArrowRight } from "react-icons/fa";
 import Header from "../components/Header";
 import Loading from "../components/Loading";
 import { startDiagnosis, reset } from "../features/Diagnosis/diagnosisSlice";
@@ -191,10 +191,10 @@ const Chat = () => {
         <div className="grid h-14 w-full place-items-center bg-white ">
           <button
             onClick={newSymptom}
-            className=" h-10 w-fit place-items-end rounded-lg px-2  text-white shadow-sky-200 drop-shadow-2xl transition-shadow active:shadow-none sm:bg-sky-500 sm:shadow-inner md:w-24"
+            className=" h-10 w-fit place-items-end rounded-lg bg-sky-500  px-2 text-white shadow-inner shadow-sky-200 drop-shadow-2xl transition-shadow active:shadow-none md:w-24"
           >
-            <span className="hidden sm:block">New</span>
-            <FaArrowRight className="text-gray-800 sm:hidden" />
+            <span className="">New</span>
+            {/* <FaArrowRight className="text-gray-800 sm:hidden" /> */}
           </button>
         </div>
       </div>
