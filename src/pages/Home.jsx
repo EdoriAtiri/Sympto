@@ -12,6 +12,7 @@ import Header from "../components/Header";
 import onlineTest from "../assets/online_test.svg";
 import person from "../assets/person-using-pc-.webp";
 import metrics1 from "../assets/metrics-img-1.png";
+import { FaStethoscope } from "react-icons/fa";
 
 const Home = () => {
   const { userAuth } = useSelector((state) => state.auth);
@@ -26,8 +27,8 @@ const Home = () => {
       {/* Hero */}
       <section className="mx-auto flex max-w-6xl flex-col bg-white px-4 pb-20 pt-16 sm:px-6 lg:px-8">
         <div className="mx-auto flex max-w-2xl flex-col items-center justify-center text-center">
-          <h1 className="text-4xl text-gray-800 md:text-6xl">
-            Navigate Your Health Journey with AI Wisdom
+          <h1 className="text-4xl capitalize text-gray-800 md:text-6xl">
+            get a quick and courteous diagnosis for your health concerns{" "}
           </h1>
           <p className="pt-6 text-xl font-light text-gray-400">
             AskDoc is your AI companion for instant symptom insights and medical
@@ -42,7 +43,8 @@ const Home = () => {
             to="/getstarted"
             className="mx-auto mt-8 flex items-center gap-4 rounded-md bg-sky-500 px-6 py-3 text-lg font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400  focus:ring-offset-2"
           >
-            <span>Get Started</span> <FaArrowRight />
+            <span className="font-bold">Diagnose Now</span>{" "}
+            <FaStethoscope size="1.5em" className="text-gray-500" />
           </Link>
         ) : (
           <Link
