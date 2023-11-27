@@ -48,8 +48,6 @@ const Login = () => {
 
     dispatch(login(formInput));
     setShowPassword(false);
-
-    console.log(formInput);
   };
 
   return (

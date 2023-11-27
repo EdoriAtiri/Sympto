@@ -44,7 +44,6 @@ const Chat = () => {
 
   useEffect(() => {
     if (message) {
-      console.log(message);
       navigate("/profile");
     }
   }, [message, navigate]);

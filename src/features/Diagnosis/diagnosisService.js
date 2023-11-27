@@ -11,8 +11,6 @@ const startDiagnosis = async (data, token) => {
 
   const response = await axios.post(`${API_URL}diagnosis/`, data, config);
 
-  console.log(response.data);
-
   return response.data;
 };
 

@@ -6,8 +6,6 @@ const register = async (data) => {
   console.log(data);
   const response = await axios.post(`${API_URL}register_user/`, data);
 
-  console.log(response);
-
   return response.data;
 };
 
@@ -18,8 +16,6 @@ const login = async (data) => {
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data));
   }
-
-  console.log(response);
 
   return response.data;
 };
@@ -34,8 +30,7 @@ const logout = () => {
 
 //   localStorage.removeItem("user");
 
-//   console.log(response);
-
+//
 //   return response.data;
 // };
 

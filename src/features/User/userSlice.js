@@ -18,7 +18,6 @@ export const createProfile = createAsyncThunk(
     const user = thunkAPI.getState().auth.userAuth.user;
     currentUser.user = user;
     const token = thunkAPI.getState().auth.userAuth.tokens.access;
-    // console.log(currentUser);
 
     try {
       return await userService.createProfile(currentUser, token);
@@ -30,7 +29,7 @@ export const createProfile = createAsyncThunk(
         error.message ||
         error.toString();
 
-      console.log(message);
+      console.error(message);
 
       return thunkAPI.rejectWithValue(message);
     }
@@ -53,7 +52,7 @@ export const getUserProfile = createAsyncThunk(
         error.message ||
         error.toString();
 
-      console.log(message);
+      console.error(message);
 
       return thunkAPI.rejectWithValue(message);
     }

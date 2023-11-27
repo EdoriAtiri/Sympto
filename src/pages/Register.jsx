@@ -53,12 +53,12 @@ const Register = () => {
             resolve({ lat: latitude, lon: longitude });
           },
           (error) => {
-            console.error("Error getting user location:", error);
+            // console.error("Error getting user location:", error);
             reject(error);
           },
         );
       } else {
-        console.error("Geolocation is not supported by this browser.");
+        // console.error("Geolocation is not supported by this browser.");
         reject("Geolocation not supported");
       }
     });
@@ -105,7 +105,7 @@ const Register = () => {
           lat: location.lat,
           lon: location.lon,
         }));
-        console.log("User location on mount:", location);
+        // console.log("User location on mount:", location);
       })
       .catch((error) => {
         console.error("Error getting user location on mount:", error);

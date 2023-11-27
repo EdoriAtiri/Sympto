@@ -13,7 +13,6 @@ const initialState = {
 export const startDiagnosis = createAsyncThunk(
   "diagnosis/start",
   async (userData, thunkAPI) => {
-    console.log(userData);
     const token = thunkAPI.getState().auth.userAuth.tokens.access;
 
     try {
@@ -26,7 +25,7 @@ export const startDiagnosis = createAsyncThunk(
         error.message ||
         error.toString();
 
-      console.log(message);
+      console.error(message);
 
       return thunkAPI.rejectWithValue(message);
     }
@@ -63,7 +62,6 @@ export const diagnosisSlice = createSlice({
           message: action.payload.response,
         };
         state.diagnosis = [...state.conversation, userData, aiData];
-        console.log(userData, aiData);
       })
       .addCase(startDiagnosis.rejected, (state, action) => {
         state.isLoading = false;

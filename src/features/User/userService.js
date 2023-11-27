@@ -3,7 +3,6 @@ const API_URL = import.meta.env.VITE_BASEURL;
 
 // create user profile
 const createProfile = async (userData, token) => {
-  console.log(userData, token);
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -31,8 +30,6 @@ const getUserProfile = async (user, token) => {
   if (response.data) {
     localStorage.setItem("userData", JSON.stringify(response.data));
   }
-
-  console.log(response);
 
   return response.data;
 };
