@@ -39,14 +39,14 @@ const Chat = () => {
     }));
   };
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (message) {
-      navigate("/profile");
-    }
-  }, [message, navigate]);
+  // useEffect(() => {
+  //   if (message) {
+  //     // navigate("/profile");
+  //   }
+  // }, [message, navigate]);
 
   const scrollToBottom = () => {
     if (chatBoxRef.current) {
