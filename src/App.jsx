@@ -9,6 +9,7 @@ import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
 import PrivateRoute from "./components/PrivateRoute";
 import GetStarted from "./components/GetStarted";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/about" element={<About />} />
 
             <Route path="/chat" element={<PrivateRoute />}>
               <Route path="/chat" element={<Chat />} />
