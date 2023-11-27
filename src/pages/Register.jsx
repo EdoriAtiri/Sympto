@@ -130,6 +130,14 @@ const Register = () => {
     dispatch(reset());
   }, [isError, message, isSuccess, userAuth, dispatch, navigate]);
 
+  useEffect(() => {
+    // Redirect if logged in
+    if (userAuth) {
+      navigate("/getstarted");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userAuth]);
+
   return (
     <div>
       {isLoading && <Loading />}
