@@ -89,6 +89,9 @@ const Register = () => {
         // lon
       };
 
+      setShowPassword(false);
+      setShowPassword2(false);
+
       dispatch(register(data));
     }
   };

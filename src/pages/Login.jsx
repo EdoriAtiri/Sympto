@@ -47,6 +47,7 @@ const Login = () => {
     e.preventDefault();
 
     dispatch(login(formInput));
+    setShowPassword(false);
 
     console.log(formInput);
   };
@@ -99,14 +100,14 @@ const Login = () => {
               </button>
             </div>
 
-            <div className="flex items-center justify-between text-sm">
+            {/* <div className="flex items-center justify-between text-sm">
               <a
                 href="javascript:void(0)"
                 className="text-center text-indigo-600 hover:text-indigo-500"
               >
                 Forgot password?
               </a>
-            </div>
+            </div> */}
             <button className="w-full rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white duration-150 hover:bg-indigo-500 active:bg-indigo-600">
               Sign in
             </button>
