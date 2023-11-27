@@ -3,7 +3,6 @@ const API_URL = import.meta.env.VITE_BASEURL;
 
 // Signup user
 const register = async (data) => {
-  console.log(data);
   const response = await axios.post(`${API_URL}register_user/`, data);
 
   return response.data;

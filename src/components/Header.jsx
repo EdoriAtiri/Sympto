@@ -47,14 +47,16 @@ const Header = () => {
                 >
                   Home
                 </Link>
+                <div className="h-1 w-0 bg-sky-500 transition-all duration-200 group-hover:w-full"></div>
               </li>
-              <li className="relative">
+              <li className="group relative">
                 <Link
                   to="/chat"
                   className="rounded-md px-2 py-1 focus:text-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-600 focus:ring-offset-2"
                 >
                   Chat
                 </Link>
+                <div className="h-1 w-0 bg-sky-500 transition-all duration-200 group-hover:w-full "></div>
               </li>
               <li className="group relative">
                 <Link
@@ -63,6 +65,7 @@ const Header = () => {
                 >
                   About
                 </Link>
+                <div className="h-1 w-0 bg-sky-500 transition-all duration-200 group-hover:w-full "></div>
               </li>
             </ul>
           </div>
