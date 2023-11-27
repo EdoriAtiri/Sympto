@@ -36,7 +36,7 @@ const GetStarted = () => {
         console.error("Error fetching user profile:", error);
         // Handle error if needed
       });
-  }, [dispatch, message, navigate]);
+  }, [dispatch, message, user, message, navigate]);
 
   // useEffect(() => {
   //   if (!wait) {
