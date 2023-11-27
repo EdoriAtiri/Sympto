@@ -23,7 +23,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/about" element={<About />} />
-            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
 
             <Route path="/chat" element={<PrivateRoute />}>
               <Route path="/chat" element={<Chat />} />

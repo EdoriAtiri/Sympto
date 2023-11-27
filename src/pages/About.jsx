@@ -6,7 +6,7 @@ const About = () => {
     <div>
       <Header />
       <main className="prose mx-auto flex max-w-6xl flex-col bg-white px-4 pb-20 pt-16 lg:prose-xl sm:px-6 lg:px-8">
-        <div className="">
+        <section aria-label="About AskDoc">
           <h1>About AskDoc</h1>
           <p>
             Welcome to AskDoc, your trusted companion on your health journey! At
@@ -15,9 +15,9 @@ const About = () => {
             instant insights into health symptoms and offering informed
             suggestions based on their medical information.
           </p>
-        </div>
+        </section>
 
-        <div>
+        <section aria-label="our mission">
           <h2>Our Mission</h2>
           <h3>Empowering Informed Healthcare Decisions</h3>
           <p>
@@ -27,9 +27,9 @@ const About = () => {
             medical advice instantly. AskDoc aims to eliminate uncertainty and
             promote informed decisions about personal health.
           </p>
-        </div>
+        </section>
 
-        <div>
+        <section aria-label="How AskDoc Works">
           <h2>How AskDoc Works</h2>
           <ol>
             <li>
@@ -57,9 +57,9 @@ const About = () => {
               </p>
             </li>
           </ol>
-        </div>
+        </section>
 
-        <div>
+        <section aria-label="Why Choose AskDoc?">
           <h2>Why Choose AskDoc?</h2>
           <ul>
             <li>
@@ -85,9 +85,9 @@ const About = () => {
               </p>
             </li>
           </ul>
-        </div>
+        </section>
 
-        <div>
+        <section aria-label="Join AskDoc Today">
           <h2>Join AskDoc Today</h2>
           <p>
             Register today and embark on a journey of health empowerment. Say
@@ -96,7 +96,7 @@ const About = () => {
             decisions easier and more accessible. Ready to take charge of your
             health? <Link to="/register">Get Started with AskDoc.</Link>
           </p>
-        </div>
+        </section>
       </main>
     </div>
   );

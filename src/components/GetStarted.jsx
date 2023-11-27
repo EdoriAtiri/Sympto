@@ -36,6 +36,7 @@ const GetStarted = () => {
         console.error("Error fetching user profile:", error);
         // Handle error if needed
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, message, user, message, navigate]);
 
   // useEffect(() => {
