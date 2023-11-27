@@ -248,14 +248,14 @@ const Register = () => {
                 required
                 className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
-              <button
+              <div
                 onClick={() => setShowPassword(!showPassword)}
                 className={`${
                   showPassword ? "text-gray-800" : "text-gray-400"
                 } absolute right-0.5 top-[2.3rem] p-2`}
               >
                 <FaEye />
-              </button>
+              </div>
             </div>
             <div className="relative">
               <label className="font-medium">Confirm Password</label>
@@ -268,14 +268,14 @@ const Register = () => {
                 required
                 className="mt-2 w-full rounded-lg border border-gray-900 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
-              <button
+              <div
                 onClick={() => setShowPassword2(!showPassword2)}
                 className={`${
                   showPassword2 ? "text-gray-800" : "text-gray-400"
                 } absolute right-0.5 top-[2.3rem] p-2`}
               >
                 <FaEye />
-              </button>
+              </div>
             </div>
 
             <button className="w-full rounded-lg bg-indigo-600 px-4 py-2 font-medium text-white duration-150 hover:bg-indigo-500 active:bg-indigo-600">

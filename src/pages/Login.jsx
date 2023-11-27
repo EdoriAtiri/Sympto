@@ -88,14 +88,14 @@ const Login = () => {
                 required
                 className="mt-2 w-full rounded-lg border border-gray-800 bg-transparent px-3 py-2 text-gray-800 shadow-sm outline-none focus:border-indigo-600"
               />
-              <button
+              <div
                 onClick={() => setShowPassword(!showPassword)}
                 className={`${
                   showPassword ? "text-gray-800" : "text-gray-400"
                 } absolute right-0.5 top-[2.3rem] p-2`}
               >
                 <FaEye />
-              </button>
+              </div>
             </div>
 
             {/* <div className="flex items-center justify-between text-sm">
